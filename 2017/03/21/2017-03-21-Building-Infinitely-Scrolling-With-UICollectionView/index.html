@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想仗剑走天涯">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想仗剑走天涯">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉">
+    <meta property="og:description" content="曾梦想仗剑走天涯">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://rockerhx.github.io/2017/03/21/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想仗剑走天涯</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/rockerhx" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+  <li class="navigation__item">
+    <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-03-21T15:10:20.000Z" class="post-list__meta--date date">3月 21 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Infinite/">Infinite</a>, <a class="tag-link" href="/tags/ScrollView/">ScrollView</a>, <a class="tag-link" href="/tags/UICollectionView/">UICollectionView</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS手把手搭建基础控件·无限循环滚动视图</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>在大多数常规App开发当中，我们都会有产品运营栏的需求，也就是列表页或者产品顶部，又或者整个页面需要展示几个滚动的运营活动、产品、广告什么的，当然，也可能是一个自己实现的一个图片浏览器。<br>在早些年，这类需求大多都是从First逐个滚动到Last，然后再自动滚到First，技术上无非都是通过UIScrollView + Timer的方案，iOS开发往往都喜欢专注于用（xuan）户（ji）体（zhuang）验（bi）的，所以后来出现了无限循环滚动的体验。</p>
+</blockquote>
+<a id="more"></a>
+<p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/00.png"><br></p>
+
+<p>得益于iOS6以后出现的<strong>UICollectionView</strong>控件，无论是滚动视图，还是做图片浏览，都降低了很多难度和代码量，但是它为了灵活性，官方没有做无限滚动Api，那么今天，我们就用<strong>UICollectionView</strong>来实现无限循环滚动视图，我把它命名为：<strong>HXInfiniteScrollView</strong>。</p>
+<blockquote>
+<p>原理：这里使用UICollectionView管理Cell方式来减少代码量和复用Cell的内存优化，通过关闭<code>scrollToItemAtIndexPath:atScrollPosition:animated:</code>滚动动画来让用户无法发觉是代码在控制滚动，让用户产生错觉变成无限循环。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/" title="UITableViewCell - 自适应速成大法">UITableViewCell - 自适应速成大法</a></h2>
+                <p class="excerpt">
+                
+                
+原文地址：https://www.raywenderlich.com/129059/self-sizing-table-view-cells转载地址：http://www.rockerhx.com/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/
+
+最近滚回成都忙房子的事情，一直没时间更新，今天在群里开到好多人在聊很多培训机构都已经辞掉iOS培训老师，关闭iOS培训课程。这尼玛回想在乔帮主时代，开发iOS还是件可以装好几年逼，而如今，日落黄昏啊。纵观近几年，有太多培训机构当搅屎棍进来瞎掺和贵国的全民创业，伪造简历不说，那帮菜鸟的技术真的是辣眼睛，卧槽，好像跑偏了，今天不是来申讨培训党的，我们是正经教程，还是回到主路继续开车~~~
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-12-12T08:26:38.000Z" class="post-list__meta--date date">12月 12 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Cell/">Cell</a>, <a class="tag-link" href="/tags/TableView/">TableView</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2016/12/12/2016-12-12-Self-sizing-Table-View-Cells/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
