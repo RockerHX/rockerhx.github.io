@@ -171,8 +171,17 @@
 
 <p>得益于iOS6以后出现的<strong>UICollectionView</strong>控件，无论是滚动视图，还是做图片浏览，都降低了很多难度和代码量，但是它为了灵活性，官方没有做无限滚动Api，那么今天，我们就用<strong>UICollectionView</strong>来实现无限循环滚动视图，我把它命名为：<strong>HXInfiniteScrollView</strong>。</p>
 <blockquote>
-<p>原理：这里使用UICollectionView管理Cell方式来减少代码量和复用Cell的内存优化，通过关闭<code>scrollToItemAtIndexPath:atScrollPosition:animated:</code>滚动动画来让用户无法发觉是代码在控制滚动，让用户产生错觉变成无限循环。</p>
+<p>这里使用UICollectionView管理Cell方式来减少代码量和复用Cell的内存优化，通过关闭<code>scrollToItemAtIndexPath:atScrollPosition:animated:</code>滚动动画来让用户无法发觉是代码在控制滚动，让用户产生错觉变成无限循环。</p>
 </blockquote>
+<p>我们假设视图是在水平滚动，Cell是横屏全部宽度填充，然后设置<code>paging</code>属性为<code>true</code>以便滚动到边缘从而获得更好的体验。</p>
+<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><blockquote>
+<p>原理：这么做依赖于有操作表的概念，这样我们就可以在收尾添加元素。好比如，你有一个包含三个项目的数组，想要他们无限循环的滚动，那就把首位元素拷贝插入到末尾，同时末尾元素拷贝一份插入到首部。演示如下：</p>
+</blockquote>
+<p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/01.png"><br></p>
+
+<p>OK，我们直接上代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">setupDataForCollectionView</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> originalItems = [<span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>]</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> firstItem = originalItems.first, <span class="keyword">let</span> lastItem = originalItems.last &#123;</div><div class="line">            <span class="keyword">var</span> workItems = originalItems</div><div class="line">            workItems.insert(lastItem, at: <span class="number">0</span>)</div><div class="line">            workItems.append(firstItem)</div><div class="line">            items = workItems</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么我们得到的<code>items</code>的内部结构就是这样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"Three"</span>, <span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>, <span class="string">"One"</span>]</div></pre></td></tr></table></figure></p>
+<p>结构上就和假想图一致。</p>
 
   </section>
 
