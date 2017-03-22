@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉</title>
+    <title>iOS手把手搭建·无限循环滚动视图 | Andy矢倉</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="曾梦想仗剑走天涯">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉">
+    <meta name="twitter:title" content="iOS手把手搭建·无限循环滚动视图 | Andy矢倉">
     <meta name="twitter:description" content="曾梦想仗剑走天涯">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="iOS手把手搭建基础控件·无限循环滚动视图 | Andy矢倉">
+    <meta property="og:title" content="iOS手把手搭建·无限循环滚动视图 | Andy矢倉">
     <meta property="og:description" content="曾梦想仗剑走天涯">
 
     
@@ -159,7 +159,7 @@
       </span> 
    
     </div>
-    <h1 class="post-title">iOS手把手搭建基础控件·无限循环滚动视图</h1>
+    <h1 class="post-title">iOS手把手搭建·无限循环滚动视图</h1>
   </header>
 
   <section class="post">
@@ -169,12 +169,12 @@
 <a id="more"></a>
 <p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/00.png"><br></p>
 
-<p>得益于iOS6以后出现的<strong>UICollectionView</strong>控件，无论是滚动视图，还是做图片浏览，都降低了很多难度和代码量，但是它为了灵活性，官方没有做无限滚动Api，那么今天，我们就用<strong>UICollectionView</strong>来实现无限循环滚动视图，我把它命名为：<strong>HXInfiniteScrollView</strong>。</p>
+<p>得益于iOS6以后出现的<strong>UICollectionView</strong>控件，无论是滚动视图，还是做图片浏览，都降低了很多难度和代码量，但是它为了灵活性，官方没有做无限滚动Api，那么今天，我们就用<strong>UICollectionView</strong>来实现无限循环滚动视图。</p>
 <blockquote>
-<p>这里使用UICollectionView管理Cell方式来减少代码量和复用Cell的内存优化，通过关闭<code>scrollToItemAtIndexPath:atScrollPosition:animated:</code>滚动动画来让用户无法发觉是代码在控制滚动，让用户产生错觉变成无限循环。</p>
+<p>这里使用UICollectionView管理Cell方式来减少代码量和复用Cell的内存优化，通过关闭<code>scrollToItem(at:at:animated:)</code>滚动动画来让用户无法发觉是代码在控制滚动，让用户产生错觉变成无限循环。</p>
 </blockquote>
 <p>我们假设视图是在水平滚动，Cell是横屏全部宽度填充，然后设置<code>paging</code>属性为<code>true</code>以便滚动到边缘从而获得更好的体验。</p>
-<h2 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h2><blockquote>
+<h2 id="揣测"><a href="#揣测" class="headerlink" title="揣测"></a>揣测</h2><blockquote>
 <p>原理：这么做依赖于有操作表的概念，这样我们就可以在收尾添加元素。好比如，你有一个包含三个项目的数组，想要他们无限循环的滚动，那就把首位元素拷贝插入到末尾，同时末尾元素拷贝一份插入到首部。演示如下：</p>
 </blockquote>
 <p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/01.png"><br></p>
@@ -182,6 +182,38 @@
 <p>OK，我们直接上代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">func</span> <span class="title">setupDataForCollectionView</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> originalItems = [<span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>]</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> firstItem = originalItems.first, <span class="keyword">let</span> lastItem = originalItems.last &#123;</div><div class="line">            <span class="keyword">var</span> workItems = originalItems</div><div class="line">            workItems.insert(lastItem, at: <span class="number">0</span>)</div><div class="line">            workItems.append(firstItem)</div><div class="line">            items = workItems</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>那么我们得到的<code>items</code>的内部结构就是这样：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"Three"</span>, <span class="string">"One"</span>, <span class="string">"Two"</span>, <span class="string">"Three"</span>, <span class="string">"One"</span>]</div></pre></td></tr></table></figure></p>
 <p>结构上就和假想图一致。</p>
+<h2 id="臆测"><a href="#臆测" class="headerlink" title="臆测"></a>臆测</h2><p>这个过程依赖于在首尾的<code>indexPath</code>需要关闭动画来实现，通过方法<code>scrollToItem(at:at:animated:)</code>实现。<br>该方法包含以下三个参数：</p>
+<ul>
+<li><code>indexPath</code>为<strong>CollectionView</strong>滚动到的位置。</li>
+<li><code>UICollectionViewScrollPosition</code>来控制<strong>CollectionView</strong>应该滚动到什么位置。</li>
+<li><code>animated</code>这个布尔值控制是否展示动画。</li>
+</ul>
+<p><code>UICollectionViewScrollPosition</code>控制滚动位置，假设<strong>CollectionView</strong>被设置了分页，如果是水平视图，我们希望它滚到左边那就为<code>UICollectionViewScrollPositionLeft</code>，如果是垂直视图，希望它滚到顶部那就是<code>uicollectionviewscrollpositiontop</code>。</p>
+<p>下面我们来看看是演示情况：</p>
+<p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/02.png"><br></p>
+
+<p>如果是往前滚的话就正好相反：</p>
+<p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/03.png"><br></p>
+
+
+<h2 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h2><p>我们实现的关键技术点就是检测用户的滚动意图，这样才能触发<code>scrollToItem(at:at:animated:)</code>方法来实现我们的目的。<br>为了能做到这一点，我们需要实现<code>UICollectionView</code>的父类的<code>UIScrollView</code>的代理方法<code>scrollViewDidEndDecelerating</code>来检测滚动停止信号。<br>再通过检测<code>contentOffset</code>属性来判断具体位置。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidEndDecelerating</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> contentOffsetX = scrollView.contentOffset.x</div><div class="line">    <span class="keyword">let</span> contentOffsetWhenFullyScrolledRight = (collectionView?.frame.width)! * <span class="type">CGFloat</span>(items.<span class="built_in">count</span> - <span class="number">1</span>)</div><div class="line">    <span class="keyword">if</span> contentOffsetX == contentOffsetWhenFullyScrolledRight &#123;</div><div class="line">        <span class="keyword">let</span> indexPath = <span class="type">IndexPath</span>.<span class="keyword">init</span>(item: <span class="number">1</span>, section: <span class="number">0</span>)</div><div class="line">        collectionView?.scrollToItem(at: indexPath, at: .<span class="keyword">left</span>, animated: <span class="literal">false</span>)</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> contentOffsetX == <span class="number">0</span> &#123;</div><div class="line">        <span class="keyword">let</span> indexPath = <span class="type">IndexPath</span>.<span class="keyword">init</span>(item: (items.<span class="built_in">count</span> - <span class="number">2</span>), section: <span class="number">0</span>)</div><div class="line">        collectionView?.scrollToItem(at: indexPath, at: .<span class="keyword">left</span>, animated: <span class="literal">false</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK，我们来看下视图结构和对应的索引结构：</p>
+<p align="center"><br><img src="/images/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/04.png"><br></p>
+
+<p>视图结构能清晰的解答：</p>
+<ul>
+<li>如果在我们滚到最右边，所看到的元素为我们拷贝的第一个元素，那么就应该调用<code>scrollToItem(at:at:animated:)</code>方法来滚动到实际上的第一个元素位置，也就是索引[0, 1]的位置。</li>
+<li>如果我们滚动到最左边，所看到的元素为我们拷贝的最后一个元素，那么就应该调用<code>scrollToItem(at:at:animated:)</code>方法来滚动到实际上的最后一个元素位置，也就是索引[0, 3]的位置，也就是处理位置里的<code>items.count - 2</code>位置。</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>创建一个无限循环的滚动视图其实So Easy，也就五个步骤：</p>
+<ul>
+<li>根据实际数据，填充收尾的假数据。</li>
+<li>检查滚动视图滚动停止时的偏移位置。</li>
+<li>如果滚动到最末尾，则移动到<code>填充过的数据项</code>中的第二项。</li>
+<li>如果滚动到最首位，则移动到<code>填充过的数据项</code>中的最后一个数据项。</li>
+<li>保证方法<code>scrollToItem:</code>里的<code>animated</code>动画参数为关闭。</li>
+</ul>
 
   </section>
 
