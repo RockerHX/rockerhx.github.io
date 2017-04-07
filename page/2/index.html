@@ -153,16 +153,16 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" title="link to post.title">Xcode7下使用git提交报错</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2015/10/02/2015-10-02-OSX-10.11-Homebrew-Issue/" title="link to post.title">升级OS X El Capitan导致Homebrew权限失效</a></h2>
       <p class="excerpt">
     
-      最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：12345678910111213The working copy “***” failed to commit files.*** Please tell me who you are.Run  git config --global user.email &amp;quot;you@example.com&amp;quot;  git config --global user.name &amp;quot;Your Name&amp;quot;to set your account&amp;apos;s default identity.Omit --global to set the identity only in this repository.fatal: unable to auto-detect email address (got &amp;apos;***@bogon.(none)&amp;apos;)
+      昨天刚升级了Homebrew，今天使用Homebrew导致权限不够，找资料看到因为OS X El Capitan引入了系统完整性保护机制，所以使用Homebrew的同学请在升级后在终端执行1sudo chown $(whoami):admin /usr/local &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/local
+Macports因为安装在/o
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Git/">Git</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2015-10-02T02:35:00.000Z" class="post-list__meta--date date">10月 2 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Homebrew/">Homebrew</a>, <a class="tag-link" href="/tags/Term/">Term</a>
+</span><a class="btn-border-small" href="/2015/10/02/2015-10-02-OSX-10.11-Homebrew-Issue/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -179,6 +179,21 @@
       <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Theme/">Theme</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2015/09/07/2015-09-07-UIAppearanceTutorial/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" title="link to post.title">Xcode7下使用git提交报错</a></h2>
+      <p class="excerpt">
+    
+      最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
+然后，过了几天，commit的时候出现这逼提示：12345678910111213The working copy “***” failed to commit files.*** Please tell me who you are.Run  git config --global user.email &amp;quot;you@example.com&amp;quot;  git config --global user.name &amp;quot;Your Name&amp;quot;to set your account&amp;apos;s default identity.Omit --global to set the identity only in this repository.fatal: unable to auto-detect email address (got &amp;apos;***@bogon.(none)&amp;apos;)
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Git/">Git</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -294,22 +309,6 @@
       <div class="post-list__meta"><time datetime="2015-06-30T03:23:27.000Z" class="post-list__meta--date date">6月 30 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/流水账/">流水账</a>
 </span><a class="btn-border-small" href="/2015/06/30/2015-06-30-Running-Account-2014-Chuanzang01/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/" title="link to post.title">修复因更新Xcode7插件不能使用问题</a></h2>
-      <p class="excerpt">
-    
-      在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
-得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUUIDs -array-add &amp;#123;UUID&amp;#125;
-懒癌患者可以在终端输入以下命令即可:
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2015-04-10T16:46:43.000Z" class="post-list__meta--date date">4月 11 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

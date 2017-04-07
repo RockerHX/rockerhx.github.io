@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>iOS 模拟定位，随时随地钉钉打卡 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想仗剑走天涯">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="iOS 模拟定位，随时随地钉钉打卡 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想仗剑走天涯">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="iOS 模拟定位，随时随地钉钉打卡 | Andy矢倉">
+    <meta property="og:description" content="曾梦想仗剑走天涯">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://rockerhx.github.io/2017/04/07/2017-04-07-iOS-Simulate-Location/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想仗剑走天涯</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/rockerhx" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+  <li class="navigation__item">
+    <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-07T07:26:38.000Z" class="post-list__meta--date date">4月 7 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/GPS/">GPS</a>, <a class="tag-link" href="/tags/Location/">Location</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">iOS 模拟定位，随时随地钉钉打卡</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>本文只使用有Mac电脑，用iPhone的骚年们。<br><strong>本章是水文，利用Xcode模拟定位打卡很早就有教程了，这里干货只有一行，离开Xcode任然保证模拟定位不变。</strong></p>
+</blockquote>
+<h3 id="对象：钉钉等LBS应用"><a href="#对象：钉钉等LBS应用" class="headerlink" title="对象：钉钉等LBS应用"></a>对象：钉钉等LBS应用</h3><p>近两年很多企业和中小型公司都开始使用钉钉打卡签到。很多苦逼党因为坐公交晚了几分钟，被扣钱，晚了几分钟，全勤没了，所以这里我们可以缓解下代码狗的痛苦 —— 模拟定位（先打卡，再到公司）。已经会连Xcode模拟定位的可以忽略前面的部分内容，直接跳到最后。</p>
+<p>公司设定打卡范围，100米，500米，1公里都可以，但是基于有模拟定位这个技术，钉钉在打卡选项里加了一项WiFi打卡，定位打卡和WiFi打开可以叠加存在以保证有人打卡作弊（后面讲解如何破解WiFi）。</p>
+<h3 id="开车"><a href="#开车" class="headerlink" title="开车"></a>开车</h3><ul>
+<li>一台Mac （安装了Xcode）</li>
+<li>一台iPhone（越狱不越狱无所谓）</li>
+<li>一根数据线。</li>
+</ul>
+<h3 id="坐标系统"><a href="#坐标系统" class="headerlink" title="坐标系统"></a>坐标系统</h3><p>这里普及一下坐标系统：<br>目前我们经常接触的无非就是<strong>原始坐标</strong>，<strong>火星坐标</strong>，<strong>二次加密坐标</strong>。</p>
+<ul>
+<li>原始坐标：手机上获取到的是原始的GPS坐标 —— <strong>WGS-84</strong>。</li>
+<li>火星坐标：我大天朝自己加了飘逸搞的一套加密坐标，中国国测局（和GFW一样的傻屌组织）—— <strong>GCJ-02</strong>：<strong>谷歌</strong>、<strong>高德</strong>。</li>
+<li>百度加密坐标：在火星坐标的基础上再次飘逸后的加密坐标 —— <strong>BD-09</strong>：<strong>百度</strong>。</li>
+</ul>
+<blockquote>
+<p>在遥远的东方，有一个天朝。<br>天朝有一个测绘局，发明了一种把美国卫星的GPS的地球坐标，进行偏移的算法，计算后，得出了一个火星坐标。<br>为了让火星坐标能正确的显示，又给每部导航软件加入了这个算法，可以在大家的地图上还原位置。并且给每部导航收费。美其名国家安全。而且这个算法看上去很牛B的样子，还不可逆。<br>所以，只有这个国家的人都在用错误的坐标。正宗的掩耳盗铃。<br>民用卫星精度都已经让你出身冷汗了，何况军用卫星。打仗估值也不会用中国的电子地图吧。<br>只可惜各种LBS应用，都是个麻烦事哦。</p>
+</blockquote>
+<p>还好黄天不负有心人，终于经过大家的模拟，计算，基本还原了<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="external">飘逸算法</a>。</p>
+<h3 id="选技师"><a href="#选技师" class="headerlink" title="选技师"></a>选技师</h3><p>坐标获取入口：</p>
+<ul>
+<li><a href="http://lbs.amap.com/console/show/picker" target="_blank" rel="external">高德</a></li>
+<li><a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank" rel="external">百度</a></li>
+</ul>
+<p>首先，根据各自的喜好，选好你想要模拟的位置，这里以高德地图为例：</p>
+<p align="center"><br><img src="/images/2017-04-07-iOS-Simulate-Location-md/0.png"><br></p>
+
+<p>可以看到右边有显示坐标 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">104.06521,30.589833</div></pre></td></tr></table></figure></p>
+<h3 id="上钟"><a href="#上钟" class="headerlink" title="上钟"></a>上钟</h3><p>iPhone所需要的坐标是<strong>WGS-84</strong>，我们获取的是<strong>GCJ-02</strong>，这里我们利用最新<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="external">飘逸还原算法</a>来转换出你所需要的真实坐标。</p>
+<p>我所在的定位<strong>四川省成都市ACC中航城市广场</strong>原始坐标为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">104.06263069384391,30.593234492328744</div></pre></td></tr></table></figure></p>
+<h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><p>这里我们需要新建一个<strong>gpx</strong>文件，包含坐标用于模拟定位。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">gpx</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></div><div class="line">    <span class="attr">creator</span>=<span class="string">"GMapToGPX 6.4j - http://www.elsewhere.org/GMapToGPX/"</span></div><div class="line">    <span class="attr">xmlns</span>=<span class="string">"http://www.topografix.com/GPX/1/1"</span></div><div class="line">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">wpt</span> <span class="attr">lat</span>=<span class="string">"30.593234492328744"</span> <span class="attr">lon</span>=<span class="string">"104.06263069384391"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">wpt</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">gpx</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>根据不同位置不同把转换得到的原始坐标对应到<strong>lat</strong>和<strong>lon</strong>里面即可。</p>
+<blockquote>
+<p>记得先把手机定位打开。</p>
+</blockquote>
+<p>真机运行一个新建的空的iOS项目，把上面我们新建的<strong>gpx</strong>文件拖到工程里，配置一下<strong>Scheme</strong>，然后真机运行即可。</p>
+<p align="center"><br><img src="/images/2017-04-07-iOS-Simulate-Location-md/1.png"><br></p><br><p align="center"><br><img src="/images/2017-04-07-iOS-Simulate-Location-md/2.png"><br></p>
+
+<p>这个时候千万别点<strong>Stop</strong>，直接<strong>Home</strong>键后台，再打开带定位的应用看看你当前的位置，484超开心。<br>还原定位的方法，直接<strong>Stop</strong>即可。</p>
+<h3 id="下钟"><a href="#下钟" class="headerlink" title="下钟"></a>下钟</h3><p>大保健做完了，可能有的会所还会送你一点小礼品，你要逗得技师开心结束的时候还会送你点小惊喜。</p>
+<blockquote>
+<p>辣么，惊喜来了：</p>
+<ul>
+<li><strong>破解钉钉WiFi打卡：</strong>把家里的WiFi名称改得和公司打卡的WiFi即可。据我测试，我们公司只配置校验了SSID，没有校验DHCP地址。</li>
+<li><strong>随时随地打卡：</strong>按照上面的步骤模拟定位完成之后，不要Stop，直接拔掉数据线（猜测是Xcode开发者模式开了个进程来模拟定位，如果Xcode上没有Stop，那这个进程就不会Kill掉）。</li>
+<li><strong>WiFi破解弊端：</strong>公司如果启动了DHCP校验，那就只能靠社工的方法搞到地址，也只能在家里打卡了。  </li>
+<li><strong>随地打卡弊端：</strong>恢复方法只能重启手机才能还原定位，经测试，微信里地图无法使用，一片空白，所以这里阔以用不用的旧的测试机来专注打卡，我就只能帮你到这里了。</li>
+</ul>
+</blockquote>
+<p>中午测试了下摩拜的红包车，如果我的手机定位没有改变，无论骑行多远，骑行距离都是0米，红包也只有一块（一中午四辆红包车均是如此）。看到这里应该不用我告诉你怎么撸红包了吧，撸红包的成本还是相对较高，必须随时背着电脑，如果公司没有开启WiFi打开，你又恰巧背了电脑，那就真的能随时随地打卡了。</p>
+<p><strong>Demo：</strong><a href="https://github.com/rockerhx/SimulateLocation" target="_blank" rel="external">https://github.com/rockerhx/SimulateLocation</a></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/03/21/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/" title="iOS手把手搭建·无限循环滚动视图">iOS手把手搭建·无限循环滚动视图</a></h2>
+                <p class="excerpt">
+                
+                
+在大多数常规App开发当中，我们都会有产品运营栏的需求，也就是列表页或者产品顶部，又或者整个页面需要展示几个滚动的运营活动、产品、广告什么的，当然，也可能是一个自己实现的一个图片浏览器。在早些年，这类需求大多都是从First逐个滚动到Last，然后再自动滚到First，技术上无非都是通过UIScrollView + Timer的方案，iOS开发往往都喜欢专注于用（xuan）户（ji）体（zhuang）验（bi）的，所以后来出现了无限循环滚动的体验。
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-03-21T15:10:20.000Z" class="post-list__meta--date date">3月 21 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Infinite/">Infinite</a>, <a class="tag-link" href="/tags/ScrollView/">ScrollView</a>, <a class="tag-link" href="/tags/UICollectionView/">UICollectionView</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2017/03/21/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
