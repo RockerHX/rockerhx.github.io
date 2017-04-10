@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐</title>
+    <title>Github仓库迁移，替换Commit数据信息 | Andy矢倉</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="曾梦想仗剑走天涯">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐">
+    <meta name="twitter:title" content="Github仓库迁移，替换Commit数据信息 | Andy矢倉">
     <meta name="twitter:description" content="曾梦想仗剑走天涯">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐">
+    <meta property="og:title" content="Github仓库迁移，替换Commit数据信息 | Andy矢倉">
     <meta property="og:description" content="曾梦想仗剑走天涯">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://rockerhx.github.io"/>
+    <link rel="canonical" href="http://rockerhx.github.io/2017/04/10/2017-04-10-Github-Change-Commit/"/>
 
                  
 </head>
@@ -147,84 +147,89 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/10/2017-04-10-Github-Change-Commit/" title="link to post.title">Github仓库迁移，替换Commit数据信息</a></h2>
-      <p class="excerpt">
-    
-      
-最近迁移了Github上旧的脑残账号，把仓库迁移到新账号的时候无意中发现Github提供了替换Commit的方法，由于仓库里都是自己提交的代码，索性通过Github提供的脚本把旧账号的信息全部替换到新账号，这样新账号还能装上经常Contribution的逼，保证不侧漏。
+            <article class="post-container post-container--single">
 
-官方提供了入口：https://help.github.com/articles/changing-author-info/
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-10T14:13:42.000Z" class="post-list__meta--date date">4月 10 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-04-10T14:13:42.000Z" class="post-list__meta--date date">4月 10 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Github/">Github</a>, <a class="tag-link" href="/tags/Location/">Location</a>, <a class="tag-link" href="/tags/git/">git</a>
-</span><a class="btn-border-small" href="/2017/04/10/2017-04-10-Github-Change-Commit/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Github仓库迁移，替换Commit数据信息</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>最近迁移了<code>Github</code>上旧的脑残账号，把仓库迁移到新账号的时候无意中发现<code>Github</code>提供了替换<code>Commit</code>的方法，由于仓库里都是自己提交的代码，索性通过<code>Github</code>提供的脚本把旧账号的信息全部替换到新账号，这样新账号还能装上经常<code>Contribution</code>的逼，保证不侧漏。</p>
+</blockquote>
+<p>官方提供了入口：<a href="https://help.github.com/articles/changing-author-info/" target="_blank" rel="external">https://help.github.com/articles/changing-author-info/</a></p>
+<blockquote>
+<p><code>Gist</code>被DNS污染的问题，要访问还是奉劝扛上梯子为妙。</p>
+</blockquote>
+<ul>
+<li><p>通过以下命令<code>clone</code>一个想要想改的裸仓库：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># user：github账号</span></div><div class="line"><span class="comment"># repo.git: 仓库名称</span></div><div class="line">git <span class="built_in">clone</span> --bare https://github.com/user/repo.git</div><div class="line"><span class="built_in">cd</span> repo.git</div></pre></td></tr></table></figure>
+</li>
+<li><p>复制粘贴脚本，并根据你的信息修改以下变量：<br><code>OLD_EMAIL</code><br><code>CORRECT_NAME</code><br><code>CORRECT_EMAIL</code></p>
+</li>
+<li><p>脚本：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div><div class="line">git filter-branch --env-filter <span class="string">'</span></div><div class="line">OLD_EMAIL="your-old-email@example.com"</div><div class="line">CORRECT_NAME="Your Correct Name"</div><div class="line">CORRECT_EMAIL="your-correct-email@example.com"</div><div class="line">if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]</div><div class="line">then</div><div class="line">    export GIT_COMMITTER_NAME="$CORRECT_NAME"</div><div class="line">    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"</div><div class="line">fi</div><div class="line">if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]</div><div class="line">then</div><div class="line">    export GIT_AUTHOR_NAME="$CORRECT_NAME"</div><div class="line">    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"</div><div class="line">fi</div><div class="line">' --tag-name-filter cat -- --branches --tags</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>记得权限需要chmod 777才能执行写入</p>
+</blockquote>
+<ul>
+<li><p>执行脚本。</p>
+</li>
+<li><p>查看新<code>git仓库</code>历史有没有错误。</p>
+</li>
+<li><p>把更改后的历史<code>push</code>到<code>Github</code>：</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git push --force --tags origin <span class="string">'refs/heads/*'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>清除刚才克隆裸仓库。</p>
+</li>
+</ul>
+<blockquote>
+<p>想我大iOS界有很多恶心的逼，最后提醒那些别有用心人，莫用这个方法去盗别人仓库。不是你的，再怎么装逼也不是你的。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/04/07/2017-04-07-iOS-Simulate-Location/" title="link to post.title">iOS 模拟定位，随时随地钉钉打卡</a></h2>
-      <p class="excerpt">
-    
-      
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/04/07/2017-04-07-iOS-Simulate-Location/" title="iOS 模拟定位，随时随地钉钉打卡">iOS 模拟定位，随时随地钉钉打卡</a></h2>
+                <p class="excerpt">
+                
+                
 本文只使用有Mac电脑，用iPhone的骚年们。本章是水文，利用Xcode模拟定位打卡很早就有教程了，这里干货只有一行，离开Xcode任然保证模拟定位不变。
 
-对象：钉钉等LBS应用近两年很多企业和中小型公司都开始使用钉钉打卡签到。很多苦逼党因为坐公交晚了几分钟，被扣钱，晚了几分钟，全勤没了，所以这里我们可以缓解下代码狗的痛苦 —— 模拟定位（先打卡，再到公司）。已经会连Xcode模拟定位的可以
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-04-07T07:26:38.000Z" class="post-list__meta--date date">4月 7 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+对象：钉钉等LBS应用近两年很多企业和中小型公司都开始使用钉钉打卡签到。很多苦逼党因为坐公交晚了几分钟，被扣钱，晚了几分钟，全勤没了，所以
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-04-07T07:26:38.000Z" class="post-list__meta--date date">4月 7 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/GPS/">GPS</a>, <a class="tag-link" href="/tags/Location/">Location</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
 </span><a class="btn-border-small" href="/2017/04/07/2017-04-07-iOS-Simulate-Location/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/03/21/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/" title="link to post.title">iOS手把手搭建·无限循环滚动视图</a></h2>
-      <p class="excerpt">
-    
-      
-在大多数常规App开发当中，我们都会有产品运营栏的需求，也就是列表页或者产品顶部，又或者整个页面需要展示几个滚动的运营活动、产品、广告什么的，当然，也可能是一个自己实现的一个图片浏览器。在早些年，这类需求大多都是从First逐个滚动到Last，然后再自动滚到First，技术上无非都是通过UIScrollView + Timer的方案，iOS开发往往都喜欢专注于用（xuan）户（ji）体（zhuang）验（bi）的，所以后来出现了无限循环滚动的体验。
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-03-21T15:10:20.000Z" class="post-list__meta--date date">3月 21 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Infinite/">Infinite</a>, <a class="tag-link" href="/tags/ScrollView/">ScrollView</a>, <a class="tag-link" href="/tags/UICollectionView/">UICollectionView</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2017/03/21/2017-03-21-Building-Infinitely-Scrolling-With-UICollectionView/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
- <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
-    
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</div>
-
+</section>
 
             <footer class="footer">
     <span class="footer__copyright">
