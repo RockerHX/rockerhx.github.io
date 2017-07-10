@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>滚蛋吧！服务器 · CloudKit入门 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想仗剑走天涯">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="滚蛋吧！服务器 · CloudKit入门 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想仗剑走天涯">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="滚蛋吧！服务器 · CloudKit入门 | Andy矢倉">
+    <meta property="og:description" content="曾梦想仗剑走天涯">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://rockerhx.github.io/2017/07/10/2017-07-10-Begining-CloudKit/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想仗剑走天涯</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/rockerhx" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+  <li class="navigation__item">
+    <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-09T16:46:11.000Z" class="post-list__meta--date date">7月 10 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/CloudKit/">CloudKit</a>, <a class="tag-link" href="/tags/iCloud/">iCloud</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">滚蛋吧！服务器 · CloudKit入门</h1>
+  </header>
+
+  <section class="post">
+    <p>各位早年大概都听说过<strong>Parse</strong>这家领先的<strong>BaaS</strong>提供商，它为移动开发提供强有力的后端支持，包括云存储、数据分析、用户关系等等。不过它的命运大概也就是被FB收购之后被家暴中了李阳神功第九重，以至于一年之后暴毙家中。</p>
+<p>什么？你没听说过Parse？没听说过BaaS？那xx的<strong>LeanCloud</strong>呢？都不知道？好吧，不送了您呢。</p>
+<a id="more"></a>
+<blockquote>
+<p>今天的猪脚<strong>CloudKit</strong>，作为Apple在<strong>iOS8</strong>上推出的基于iCloud的一个云端数据存储服务，提供了低成本的云存储并能作为一个后端服务，通过用户们的iCloud账号分享其应用数据。以上是行话，<strong>CloudKit</strong>对于移动开发者好处请自行QA or <a href="http://nshipster.cn/cloudkit/" target="_blank" rel="external">Here</a>。</p>
+</blockquote>
+<p>至于为啥三年后的今天才蹭这个热点，还是归咎于今年正式出道，成了流落街头的个人开发者。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/1.jpg" alt="我能怎么办？我也很绝望啊！！！"><br></p>
+
+<p>你要问我原因？？？</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/2.png" alt="iOS没人要辣"><br></p>
+
+<p>又或者。。。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/3.jpg" alt="打工这方面 打工是不可能打工的 这辈子不可能打工的"><br></p>
+
+<blockquote>
+<p>本文你将学习到<strong>CloudKit框架</strong>的所有方面，包括使用<strong>CloudKit Dashboard</strong>管理数据库以及创建和修改记录等重要基础知识，还有更高级的功能，如管理数据冲突，共享数据等。</p>
+</blockquote>
+<h3 id="社会你华哥，人狠话不多！！！"><a href="#社会你华哥，人狠话不多！！！" class="headerlink" title="社会你华哥，人狠话不多！！！"></a>社会你华哥，人狠话不多！！！</h3><p>在此CloudKit教程中，我们将通过创建一个名为BabiFüd的餐厅评级App，以此来实际操作CloudKit。</p>
+<blockquote>
+<p>注意：此CloudKit教程中的Demo，需要一个iOS开发者帐户。否则将无法启用iCloud授权或访问<strong>CloudKit dashboard</strong>。</p>
+</blockquote>
+<p>本教程的Demo，BabiFüd是一个类似于“速度餐厅”的App。用户根据小屁孩友好度，而不是根据食品质量，服务速度或价格来评价的餐厅。 这里面包括设施新旧，小屁孩餐具和食品的健康程度来作为评价基准。<br>该应用程序包含四个选项卡：附近餐厅列表，附近餐馆的地图，用户笔记和设置。本教程中我们只使用附近餐馆的列表这个选项卡。下面简单的展示下Demo效果。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/nearby.png" alt=""><br><img src="/images/2017-07-10-Begining-CloudKit/map.png" alt=""><br></p>
+
+<p>模型类通过调用CloudKit来支撑视图。records作为CloudKit对象。<code>Establishment</code>是在模型中的主要record类型，它代表Demo中的各种餐馆。</p>
+<h3 id="不逼逼了，开撸"><a href="#不逼逼了，开撸" class="headerlink" title="不逼逼了，开撸"></a>不逼逼了，开撸</h3><p>我们先下载<a href="/others/2017-07-10-Begining-CloudKit/BabiFud-Cloudkit-Starter.zip">初始工程</a>。</p>
+<p>在开始正式编码之前，必须更改工程的<code>Bundle ID</code>和<code>Team</code>，就如前面说的，必须要有付费的开发者计划才能获取到<strong>CloudKit权限</strong>。熟悉iOS开发的童鞋对这个过程肯定是So easy。</p>
+<p>打开<code>BabiFud.xcodeproj</code>，并在<code>Project Navigator</code>选择<code>BabiFud</code>工程，接着选择<code>BabiFud target</code>，在<code>General</code>选项里替换好<code>Bundle Identifier</code>，最后选着好有付费开发者计划的<code>Team</code>即可。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/BabiFud-Bundle-ID.png" alt=""><br></p>
+
+<p>得益于新版Xcode的优势，<code>Team</code>将自动绑定好<code>Bundle Identifier</code>，现在，你只需要设置好<code>CloudKit</code>并且创建一些<code>containers</code>来保存数据即可。</p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><blockquote>
+<p>入门总体就这些了，深入的进阶我也在探索当中，如果你也想出道，阔以买件<a href="https://s.click.taobao.com/CTQd6gw" target="_blank" rel="external">窃·格瓦拉T恤</a>穿出去看会不会被打死，买前可以<a href="https://s.click.taobao.com/PIUd6gw" target="_blank" rel="external">领券</a>，没死你就成功出道辣。。。</p>
+</blockquote>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/99.jpg" alt="窃·格瓦拉T恤"><br></p>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/04/10/2017-04-10-Github-Change-Commit/" title="Github仓库迁移，替换Commit数据信息">Github仓库迁移，替换Commit数据信息</a></h2>
+                <p class="excerpt">
+                
+                
+最近迁移了Github上旧的脑残账号，把仓库迁移到新账号的时候无意中发现Github提供了替换Commit的方法，由于仓库里都是自己提交的代码，索性通过Github提供的脚本把旧账号的信息全部替换到新账号，这样新账号还能装上经常Contribution的逼，保证不侧漏。
+
+官方提供了入口：http
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-04-10T14:13:42.000Z" class="post-list__meta--date date">4月 10 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Github/">Github</a>, <a class="tag-link" href="/tags/Location/">Location</a>, <a class="tag-link" href="/tags/git/">git</a>
+</span><a class="btn-border-small" href="/2017/04/10/2017-04-10-Github-Change-Commit/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
