@@ -153,16 +153,18 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" title="link to post.title">Xcode7下使用git提交报错</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/04/10/2017-04-10-Github-Change-Commit/" title="link to post.title">Github仓库迁移，替换Commit数据信息</a></h2>
       <p class="excerpt">
     
-      最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：12345678910111213The working copy “***” failed to commit files.*** Please tell me who you are.Run  git config --global user.email &amp;quot;you@example.com&amp;quot;  git config --global user.name &amp;quot;Your Name&amp;quot;to set your account&amp;apos;s default identity.Omit --global to set the identity only in this repository.fatal: unable to auto-detect email address (got &amp;apos;***@bogon.(none)&amp;apos;)
+      
+最近迁移了Github上旧的脑残账号，把仓库迁移到新账号的时候无意中发现Github提供了替换Commit的方法，由于仓库里都是自己提交的代码，索性通过Github提供的脚本把旧账号的信息全部替换到新账号，这样新账号还能装上经常Contribution的逼，保证不侧漏。
+
+官方提供了入口：https://help.github.com/articles/changing-author-info/
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Git/">Git</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-04-10T14:13:42.000Z" class="post-list__meta--date date">4月 10 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Github/">Github</a>, <a class="tag-link" href="/tags/Location/">Location</a>, <a class="tag-link" href="/tags/git/">git</a>
+</span><a class="btn-border-small" href="/2017/04/10/2017-04-10-Github-Change-Commit/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
@@ -216,6 +218,19 @@
         (function() {
             var hm = document.createElement("script");
             hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
+f7bf3f3cb";
             var s = document.getElementsByTagName("script")[0]; 
             s.parentNode.insertBefore(hm, s);
         })();
