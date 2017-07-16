@@ -179,7 +179,7 @@
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/3.jpg" alt="打工这方面 打工是不可能打工的 这辈子不可能打工的"><br></p>
 
 <blockquote>
-<p>本文你将学习到<strong>CloudKit框架</strong>的所有方面，包括使用<strong>CloudKit Dashboard</strong>管理数据库以及创建和修改记录等重要基础知识，还有更高级的功能，如管理数据冲突，共享数据等。</p>
+<p>本文你将学习到<strong>CloudKit框架</strong>的所有方面，包括使用<strong>CloudKit Dashboard</strong>管理数据库以及创建和修改记录等重要基础知识，还有更高级的功能，如管理数据冲突，共享数据等。<br><strong>但有一个最大最大的问题，你需要一个真实的并且没有过期的开发者账户，而不是去买个证书就能搞定的。如果你是一个真正的iOS开发者，我相信你即便没有自己的开发账户，也有公司的。如果没有那还是赶紧打住，不要继续浪费生命了。</strong></p>
 </blockquote>
 <h3 id="社会你拉哥，人狠话不多！！！"><a href="#社会你拉哥，人狠话不多！！！" class="headerlink" title="社会你拉哥，人狠话不多！！！"></a>社会你拉哥，人狠话不多！！！</h3><p>在此CloudKit教程中，我们将通过创建一个名为BabiFüd的餐厅评级App，以此来实际操作CloudKit。</p>
 <blockquote>
@@ -247,7 +247,7 @@
 <li><strong>HealthyOption：</strong>健康指数选项。</li>
 <li><strong>KidsMenu：</strong>儿童菜单。</li>
 </ul>
-<p>在<code>CloudKit Dashboard</code>里进入<code>Development</code>的<strong>Data</strong>分组，选择<code>Record Type</code>栏，如图所示，选择<code>Create New Type</code>创建新的记录类型：</p>
+<p>在<code>CloudKit Dashboard</code>里进入<code>Development</code>的<strong>Data</strong>分组，选择<code>RECORD TYPE</code>栏，如图所示，选择<code>Create New Type</code>创建新的记录类型：</p>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Add-Record-Type.png" alt=""><br></p>
 
 <blockquote>
@@ -256,7 +256,7 @@
 <p>接下来我们添加自定义字段，点击<code>Add Field</code>，新建<code>Name</code>字段，类型属性是<strong>String</strong>，最后点击<code>Save Record Type</code>保存新建字段。</p>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/New-Record-Type.png" alt=""><br></p>
 
-<p>然后新建索引，选中刚刚新建的记录类型<strong>Establishment</strong>，点击<code>Add Index</code>为<strong>Name</strong>字段添加三个索引，分别是：<strong>QUERYABLE</strong>，<strong>SOTREABLE</strong>，<strong>SEARCHABLE</strong>。</p>
+<p>然后新建索引，切换到<code>INDEXS</code>栏，选中刚刚新建的记录类型<strong>Establishment</strong>，点击<code>Add Index</code>为<strong>Name</strong>字段添加三个索引，分别是：<strong>QUERYABLE</strong>，<strong>SOTREABLE</strong>，<strong>SEARCHABLE</strong>。</p>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Record-Type-New-Index.png" alt=""><br></p>
 
 <blockquote>
@@ -274,6 +274,28 @@
 <blockquote>
 <p>一次性添加字段，一定要检查好字段名称和对应的类型属性。如果你弄错了，唯一能改的方法就是删了对应字段，再从新添加。</p>
 </blockquote>
+<p>接下来，就要添加真正的记录了。选中<code>RECORDS</code>栏，确认好<strong>Public Database</strong>和<strong>Default Zone</strong>，然后点击<code>Create New Record…</code>按钮，创建真正的记录。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/New-Establishment-Record-Blank.png" alt=""><br></p>
+
+<p>接着我们要做到就是添加一些<strong>虚拟数据</strong>。至于位置信息建议都稍微集中点，这里我们把定位都设在苹果总部附近，方便在模拟器中查看。请根据下图把模拟数据，或者你兴致好自己想也成。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Entitlement-Records-Data.png" alt=""><br></p>
+
+<p>创建完成之后，怎么知道有没有成功呢？得益于我们之前已经建立好索引，现在我们直接选择好记录类型查询即可。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/All-Three-Records.png" alt=""><br></p>
+
+<blockquote>
+<p>新版本UI不像老版本，创建成功之后会直接显示记录，而是需要根据自己需求查询。</p>
+</blockquote>
+<p>对于每个记录，数据和App里表示可能完全是不同的，例如，<code>SeatingType</code>和<code>ChangingTable</code>是<strong>structs</strong>。因此，座椅类型的Int值可能对应于“高脚椅”或“助推器”座椅。对于<code>HealthyOption</code>和<code>KidsMenu</code>，Int值表示布尔类型：0表示建立不具有该选项，1表示它是。</p>
+<blockquote>
+<p>如果你一直在跟着教程走，前期已经把开发者账号准备好，并且工程的证书，配置文件，iCloud报错都搞定之后，我们马上才能开始真正的代码之旅。</p>
+</blockquote>
+<p>如果还有问题，可以对照教程查错或是自行检查。</p>
+<ul>
+<li>需要有一个可用于开发的iCloud帐户：<a href="https://developer.apple.com/library/tvos/documentation/DataManagement/Conceptual/CloudKitQuickStart/EnablingiCloudandConfiguringCloudKit/EnablingiCloudandConfiguringCloudKit.html#//apple_ref/doc/uid/TP40014987-CH2-SW7" target="_blank" rel="external">Creating an iCloud Account for Development.</a></li>
+<li>帐户相关联的iCloud凭据：<a href="https://developer.apple.com/library/tvos/documentation/DataManagement/Conceptual/CloudKitQuickStart/CreatingaSchemabySavingRecords/CreatingaSchemabySavingRecords.html#//apple_ref/doc/uid/TP40014987-CH3-SW12" target="_blank" rel="external">Enter iCloud Credentials Before Running Your App.</a></li>
+</ul>
+<p>你要是操作的够丝滑，现在可以打开Xcode和我们的Demo工程。是时候开始代码狗真正的搬砖工作了！</p>
 <h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><blockquote>
 <p>入门总体就这些了，深入的进阶我也在探索当中，如果你也想出道，阔以买件<a href="https://s.click.taobao.com/CTQd6gw" target="_blank" rel="external">窃·格瓦拉T恤</a>穿出去看会不会被打死，买前可以<a href="https://s.click.taobao.com/PIUd6gw" target="_blank" rel="external">领券</a>，没死你就成功出道辣。。。</p>
 </blockquote>
