@@ -226,8 +226,54 @@
 <p>新版的界面就长这样，看起来比老版本丑了不是一个数量级，设计组的人怎么想的，赐予你们随意感受下：</p>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/CloudKit-Dashboard.png" alt=""><br></p>
 
+<p>新版<strong>CloudKit Dashboard</strong>包含：<strong>Data</strong>，<strong>Logs</strong>，<strong>Telemetry</strong>，<strong>Public Database Usage</strong>，<strong>Api Access</strong>。</p>
+<ul>
+<li><strong>Data：</strong>包含了ZONES，RECORDS，RECORD TYPES，INDEXES，SUBSCRIPTIONS，SUBSCRIPTION TYPES，SECURITY ROLES，CloudKit的数据中心入口，本教程暂时只使用Record Types，其他类型后续讲解。</li>
+<li><strong>Logs：</strong>查看服务器活动日志，显示数据库操作，推送通知以及对应环境中的其他活动。</li>
+<li><strong>Telemetry：</strong>查看对应环境中服务器端性能和数据库利用率的图表，分享和推送事件。</li>
+<li><strong>Public Database Usage：</strong>查看公共数据库使用情况的图表，包括活跃用户，请求频率，资产转移和数据库存储。</li>
+<li><strong>Api Access：</strong>管理API令牌和服务器密钥，允许对应环境进行Web服务调用。</li>
+</ul>
+<blockquote>
+<p><strong>Record Types：</strong>它可以定义了很多字段。如果用面向对象来解释，它就像一个类。一个记录可以看做是一份实例，简单理解的话，它其实就是一个键值对的数据结构集合。</p>
+</blockquote>
+<h3 id="创建Record-Type"><a href="#创建Record-Type" class="headerlink" title="创建Record Type"></a>创建Record Type</h3><p>在这里，搭配我们的Demo需要创建一个名为<code>Establishment</code>的<code>Record Type</code>数据模型，企业模型需要很多数据构成：名称，位置和可用性，以及各种适合儿童的选项。除了内置字段以外，我们的自定义字段包含：</p>
+<ul>
+<li><strong>Name：</strong>企业名称。</li>
+<li><strong>Location：</strong>企业地理位置信息。</li>
+<li><strong>CoverPhoto：</strong>企业Logo或者封面。</li>
+<li><strong>ChangingTable：</strong>婴儿换衣台类型。</li>
+<li><strong>SeatingType：</strong>座位类型。</li>
+<li><strong>HealthyOption：</strong>健康指数选项。</li>
+<li><strong>KidsMenu：</strong>儿童菜单。</li>
+</ul>
+<p>在<code>CloudKit Dashboard</code>里进入<code>Development</code>的<strong>Data</strong>分组，选择<code>Record Type</code>栏，如图所示，选择<code>Create New Type</code>创建新的记录类型：</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Add-Record-Type.png" alt=""><br></p>
 
+<blockquote>
+<p>记住新创建的记录类型名称为：<strong>Establishment</strong>，千万别弄错了，不然Demo报错找不到对应的记录。</p>
+</blockquote>
+<p>接下来我们添加自定义字段，点击<code>Add Field</code>，新建<code>Name</code>字段，类型属性是<strong>String</strong>，最后点击<code>Save Record Type</code>保存新建字段。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/New-Record-Type.png" alt=""><br></p>
 
+<p>然后新建索引，选中刚刚新建的记录类型<strong>Establishment</strong>，点击<code>Add Index</code>为<strong>Name</strong>字段添加三个索引，分别是：<strong>QUERYABLE</strong>，<strong>SOTREABLE</strong>，<strong>SEARCHABLE</strong>。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Record-Type-New-Index.png" alt=""><br></p>
+
+<blockquote>
+<p>注意，<a href="https://developer.apple.com/library/content/documentation/DataManagement/Conceptual/CloudKitQuickStart/Introduction/Introduction.html#//apple_ref/doc/uid/TP40014987-CH1-SW1" target="_blank" rel="external">CloudKit Quick Start官方文档</a>没有及时更新，在老版本里面，新建字段会自动新建索引，新版<strong>CloudKit Dashboard</strong>则不会，需要我们自己按需添加。</p>
+</blockquote>
+<p>剩下的<strong>Field字段</strong>和<strong>Index索引</strong>按照下表自行添加：</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Entitlement-Record-Fields.png" alt=""><br></p>
+
+<p>我们可以一次性点击添加多个字段，你非要浪费生命一个个添加我也没有什么办法来说你。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/List-of-Fields.png" alt=""><br></p>
+
+<p>添加之后基本上就长这样了，如果程序报错，可以回来稍微对照一盘。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Perfect-Record-Types.png" alt=""><br><img src="/images/2017-07-10-Begining-CloudKit/All-Indexs.png" alt=""><br></p>
+
+<blockquote>
+<p>一次性添加字段，一定要检查好字段名称和对应的类型属性。如果你弄错了，唯一能改的方法就是删了对应字段，再从新添加。</p>
+</blockquote>
 <h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><blockquote>
 <p>入门总体就这些了，深入的进阶我也在探索当中，如果你也想出道，阔以买件<a href="https://s.click.taobao.com/CTQd6gw" target="_blank" rel="external">窃·格瓦拉T恤</a>穿出去看会不会被打死，买前可以<a href="https://s.click.taobao.com/PIUd6gw" target="_blank" rel="external">领券</a>，没死你就成功出道辣。。。</p>
 </blockquote>
