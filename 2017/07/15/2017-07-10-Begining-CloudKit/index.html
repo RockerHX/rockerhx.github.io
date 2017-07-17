@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://rockerhx.github.io/2017/07/10/2017-07-10-Begining-CloudKit/"/>
+    <link rel="canonical" href="http://rockerhx.github.io/2017/07/15/2017-07-10-Begining-CloudKit/"/>
 
                  
 </head>
@@ -151,7 +151,7 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-07-09T16:46:11.000Z" class="post-list__meta--date date">7月 10 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+      <time datetime="2017-07-14T16:46:11.000Z" class="post-list__meta--date date">7月 15 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/CloudKit/">CloudKit</a>, <a class="tag-link" href="/tags/iCloud/">iCloud</a>
  </span>
       <span class="page-pv">
@@ -169,7 +169,7 @@
 <blockquote>
 <p>今天的猪脚<strong>CloudKit</strong>，作为Apple在<strong>iOS8</strong>上推出的基于iCloud的一个云端数据存储服务，提供了低成本的云存储并能作为一个后端服务，通过用户们的iCloud账号分享其应用数据。以上是行话，<strong>CloudKit</strong>对于移动开发者好处请自行QA or <a href="http://nshipster.cn/cloudkit/" target="_blank" rel="external">Here</a>。</p>
 </blockquote>
-<p>至于为啥三年后的今天才蹭这个热点，还是归咎于今年正式出道，成了流落街头的个人开发者。</p>
+<p>至于为啥三年后的今天才蹭这个热点，还是归咎于今年正式出道，成了流落街头的个人开发狗。</p>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/1.jpg" alt="我能怎么办？我也很绝望啊！！！"><br></p>
 
 <p>你要问我原因？？？</p>
@@ -296,8 +296,86 @@
 <li>帐户相关联的iCloud凭据：<a href="https://developer.apple.com/library/tvos/documentation/DataManagement/Conceptual/CloudKitQuickStart/CreatingaSchemabySavingRecords/CreatingaSchemabySavingRecords.html#//apple_ref/doc/uid/TP40014987-CH3-SW12" target="_blank" rel="external">Enter iCloud Credentials Before Running Your App.</a></li>
 </ul>
 <p>你要是操作的够丝滑，现在可以打开Xcode和我们的Demo工程。是时候开始代码狗真正的搬砖工作了！</p>
-<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><blockquote>
-<p>入门总体就这些了，深入的进阶我也在探索当中，如果你也想出道，阔以买件<a href="https://s.click.taobao.com/CTQd6gw" target="_blank" rel="external">窃·格瓦拉T恤</a>穿出去看会不会被打死，买前可以<a href="https://s.click.taobao.com/PIUd6gw" target="_blank" rel="external">领券</a>，没死你就成功出道辣。。。</p>
+<h3 id="记录查询"><a href="#记录查询" class="headerlink" title="记录查询"></a>记录查询</h3><p><code>CKQuery</code>对象用于从数据库中查询记录。它描述了如何查找符合特定条件的指定记录类型的所有记录。它们可以是以<strong>M</strong>打头的名称字段的所有记录，或是<strong>强化座椅</strong>的所有记录，亦或者<strong>3km内</strong>的所有记录“。那查询的表达式当然是用<code>NSPredicate</code>。谓词也用于Core Data，也适用于CloudKit，毕竟<strong>NSPredicate</strong>在原生开发里是通用的查询表达式。</p>
+<p>但不要高兴的太早，CloudKit仅支持NSPredicate部分函数。 包括常用数学运算和比较，字符串的集合操作（例如”列表中的字段匹配”）和特殊距离函数。至于<code>distanceToLocation:fromLocation:</code>这种函数已添加到NSPredicate中，以便CloudKit里的位置记录与来自已知位置的指定半径内的位置字段进行匹配。这种类型的谓词将在下面做出详细介绍。对于其他类型的查询，<a href="https://developer.apple.com/library/ios/documentation/CloudKit/Reference/CKQuery_class/" target="_blank" rel="external">CKQuery</a>类引用包含了详细的函数列表以及如何使用它们的说明。</p>
+<blockquote>
+<p>注意：CloudKit包括对<strong>CLLocation</strong>对象的支持。使用这种<strong>Core Location</strong>的坐标对象，更方便的创建两个坐标之间的计算查询，避免你写很多杂乱无章的数学表达式。</p>
+</blockquote>
+<p>好，我们现在点开<code>Model/Model.swift</code>文件，使用下面代码替换掉<code>fetchEstablishments(_ location:CLLocation, radiusInMeters:CLLocationDistance)</code>方法的内容：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">fetchEstablishments</span><span class="params">(<span class="number">_</span> location: CLLocation, radiusInMeters: CLLocationDistance)</span></span> &#123;</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  <span class="keyword">let</span> radiusInKilometers = radiusInMeters / <span class="number">1000.0</span></div><div class="line">  <span class="comment">// 2</span></div><div class="line">  <span class="keyword">let</span> locationPredicate = <span class="type">NSPredicate</span>(format: <span class="string">"distanceToLocation:fromLocation:(%K,%@) &lt; %f"</span>, <span class="string">"Location"</span>, location, radiusInKilometers)</div><div class="line">  <span class="comment">// 3</span></div><div class="line">  <span class="keyword">let</span> query = <span class="type">CKQuery</span>(recordType: <span class="type">EstablishmentType</span>, predicate: locationPredicate)</div><div class="line">  <span class="comment">// 4</span></div><div class="line">  publicDB.perform(query, inZoneWith: <span class="literal">nil</span>) &#123; [<span class="keyword">unowned</span> <span class="keyword">self</span>] results, error <span class="keyword">in</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> error = error &#123;</div><div class="line">      <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">        <span class="keyword">self</span>.delegate?.errorUpdating(error <span class="keyword">as</span> <span class="type">NSError</span>)</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Cloud Query Error - Fetch Establishments: <span class="subst">\(error)</span>"</span>)</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">self</span>.items.removeAll(keepingCapacity: <span class="literal">true</span>)</div><div class="line">    results?.forEach(&#123; (record: <span class="type">CKRecord</span>) <span class="keyword">in</span></div><div class="line">      <span class="keyword">self</span>.items.append(<span class="type">Establishment</span>(record: record,</div><div class="line">                                      database: <span class="keyword">self</span>.publicDB))</div><div class="line">    &#125;)</div><div class="line">    <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">      <span class="keyword">self</span>.delegate?.modelUpdated()</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>按照编号代码功能如下：</p>
+<ul>
+<li>1.<strong>CloudKit</strong>中谓词功能的距离单位是公里，这行代码只是距离单位转换。</li>
+<li>2.根据当前位置和半径范围，筛选出范围内的餐饮企业，过滤掉不需要的对象。</li>
+<li>3.根据记录类型和谓词查询条件，创建<strong>CKQuery</strong>对象用于远程查询。</li>
+<li>4.最后执行<code>performQuery(_:inZoneWithID:completionHandler:)</code>，iCloud将按照查询条件进行数据筛选，在闭包里等查询结果的返回。</li>
+</ul>
+<blockquote>
+<p><code>inZoneWithID</code>参数如果不传，那就是默认的公有数据库的DefaultZone。如果想把公有和私有的数据库都进行检索，就必须分开查询。</p>
+</blockquote>
+<p>对于<code>CKDatabase</code>的实例publicDB，我们可以查看<code>Model.swift</code>顶部：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> container: <span class="type">CKContainer</span></div><div class="line"><span class="keyword">let</span> publicDB: <span class="type">CKDatabase</span></div><div class="line"><span class="keyword">let</span> privateDB: <span class="type">CKDatabase</span></div><div class="line">  </div><div class="line"><span class="keyword">init</span>() &#123;</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  container = <span class="type">CKContainer</span>.defaultContainer() </div><div class="line">  <span class="comment">// 2</span></div><div class="line">  publicDB = container.publicCloudDatabase </div><div class="line">  <span class="comment">// 3</span></div><div class="line">  privateDB = container.privateCloudDatabase </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述我们定义的集中数据库实例：</p>
+<ul>
+<li>1.默认容器就是你在<strong>iCloud Dashboard</strong>窗口中看到那些内容。</li>
+<li>2.公共数据库是你应用程序所有用户共享的数据库。</li>
+<li>3.私有数据库仅包含属于当前登录用户的数据，此教程暂不讨论。</li>
+</ul>
+<p>该代码将从公共数据库检索一些本地的餐饮企业，但必须将其连接到视图控制器才能看到对应内容。</p>
+<h3 id="设置回调"><a href="#设置回调" class="headerlink" title="设置回调"></a>设置回调</h3><p>这里我们用熟悉的代理模式来处理回调。在<code>Model.swift</code>顶部实现如下协议：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">ModelDelegate</span> </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">errorUpdating</span><span class="params">(error: NSError)</span></span></div><div class="line">  <span class="function"><span class="keyword">func</span> <span class="title">modelUpdated</span><span class="params">()</span></span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接着打开<code>MasterViewController.swift</code>，覆盖掉<code>modelUpdated()</code>的实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">modelUpdated</span><span class="params">()</span></span> &#123;</div><div class="line">  refreshControl?.endRefreshing() </div><div class="line">  tableView.reloadData() </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当有数据回来时，<code>tableView(_:cellForRowAtIndexPath:)</code>已经添加好实现，会自动Cell处理刷新。<br>同样，覆盖掉<code>errorUpdating(_:)</code>的实现：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">errorUpdating</span><span class="params">(<span class="number">_</span> error: NSError)</span></span> &#123;</div><div class="line">  <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="literal">nil</span>,</div><div class="line">                                          message: error.localizedDescription,</div><div class="line">                                          preferredStyle: .alert)</div><div class="line">    </div><div class="line">  alertController.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"Dismiss"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>))</div><div class="line">    </div><div class="line">  present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当查询产生错误时调用此方法。由于网络太差或CloudKit的某些特定问题（如缺少，不正确的用户权限或查询中没有记录），都可能会发生错误。<br>对于任何类型的远程服务屌用时，良好的错误处理逻辑是至关重要的。现在，简单处理，只需要向用户显示返回错误的消息即可。</p>
+<blockquote>
+<p>然而，有一种常见问题就是用户没有登录到iCloud或没有为此应用打开iCloud权限。所以你可以修改<code>errorUpdating(_:)</code>来处理这种常见情况。提示：这两种错误码<code>CKErrorCode</code>返回都为<code>1</code>。</p>
+</blockquote>
+<p>考虑到懒癌患者：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">errorUpdating</span><span class="params">(<span class="number">_</span> error: NSError)</span></span> &#123;</div><div class="line">  <span class="keyword">let</span> message: <span class="type">String</span></div><div class="line">  <span class="keyword">if</span> error.code == <span class="number">1</span> &#123;</div><div class="line">    message = <span class="string">"Log into iCloud on your device and make sure the iCloud drive is turned on for this app."</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    message = error.localizedDescription</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">let</span> alertController = <span class="type">UIAlertController</span>(title: <span class="literal">nil</span>,</div><div class="line">                                          message: message,</div><div class="line">                                          preferredStyle: .alert)</div><div class="line">    </div><div class="line">  alertController.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"Dismiss"</span>, style: .<span class="keyword">default</span>, handler: <span class="literal">nil</span>))</div><div class="line">    </div><div class="line">  present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>那么剩下就是让Xcode飞起来，你就能看到你如下列表。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Build-Run-1-No-Images.png" alt=""><br></p>
+
+
+<h3 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h3><ul>
+<li>如果您使用的是iOS模拟器，并且列表不能正常显示，请通过从<strong>Xcode</strong>的功能菜单，路径：<code>Debug\Simulate Location\San Francisco, CA, USA</code>，中进行选择。确保设置了正确的位置，下拉刷新拉取正确数据，不要干等着浪费生命。</li>
+<li>如果您使用的是iPhone或iPad等实体机设备，并且启用位置服务，要是列表不能显示，那么肯定是离我们的虚拟餐厅的距离位置还不够近。<br>现在你有两个选择：把我们的模拟数据位置改到你当前位置的附近，或使用模拟器运行应用程序。要还不行，我建议牵条狗去苹果总部遛弯得了。</li>
+<li>当然你要想显示的前提是，你真的有数据，如果按照前面的教程做了之后，<strong>CloudKit Dashboard</strong>里肯定是有完整数据的，前面也说过，如果你要修改数据，唯一方法，删了重建。</li>
+</ul>
+<p>在调试<strong>CloudKit</strong>的时候可能会遇到相当棘手的错误，在做本教程的时候，我并没有遇到什么蛋疼问题，如果你有遇到，可以使用<code>CKErrorCode</code>的枚举来定位问题，这样免得你像个无头苍蝇一样不知所措。</p>
+<p>以下是一些常见错误：</p>
+<ul>
+<li><strong>.badContainer：</strong>指定的未知容器或未经授权。</li>
+<li><strong>.notAuthenticated：</strong>当前用户未通过授权验证，并且没有用户记录可用。如果用户没有登录到iCloud，可能会发生这种情况。</li>
+<li><strong>.unknownItem：</strong>指定的记录不存在。</li>
+</ul>
+<blockquote>
+<p>当我们在拉取餐厅数据的时候，只看到<strong>餐厅名字</strong>和<strong>服务内容</strong>，并没有看到餐厅图片，What the fuck！！！<br>做个网络开发的都知道，不管你是拉取的图片是二进制数据或者是图片地址，都要自行加载显示，所以不要精慌，教程继续。。。</p>
+</blockquote>
+<h3 id="二进制数据资源"><a href="#二进制数据资源" class="headerlink" title="二进制数据资源"></a>二进制数据资源</h3><p>接下来该整合二进制数据资源，这里的资源就是我们所需要的图片，当然可以是任何你想要的数据资源，都是以二进制的方式存在数据库里。这里我们需要把二进制的图片加载到<code>MasterViewController</code>的列表里。<br>这里我们自己实现相关的图片下载和相关的加载逻辑。</p>
+<p>打开<code>Model/Establishment.swift</code>文件，替换<code>loadCoverPhoto(_:)</code>方法里的代码：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">loadCoverPhoto</span><span class="params">(completion:@escaping <span class="params">(<span class="number">_</span> photo: UIImage?)</span></span></span> -&gt; ()) &#123;</div><div class="line">  <span class="comment">// 1</span></div><div class="line">  <span class="type">DispatchQueue</span>.global(qos: <span class="type">DispatchQoS</span>.<span class="type">QoSClass</span>.background).async &#123;</div><div class="line">    <span class="keyword">var</span> image: <span class="type">UIImage</span>!</div><div class="line">    <span class="keyword">defer</span> &#123;</div><div class="line">      completion(image)</div><div class="line">    &#125;</div><div class="line">      <span class="comment">// 2</span></div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> asset = <span class="keyword">self</span>.record[<span class="string">"CoverPhoto"</span>] <span class="keyword">as</span>? <span class="type">CKAsset</span> <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">      </div><div class="line">    <span class="keyword">let</span> imageData: <span class="type">Data</span></div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">      imageData = <span class="keyword">try</span> <span class="type">Data</span>(contentsOf: asset.fileURL)</div><div class="line">    &#125; <span class="keyword">catch</span> &#123;</div><div class="line">      <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    image = <span class="type">UIImage</span>(data: imageData)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此方法的作用就是图像延迟加载：</p>
+<ul>
+<li>我们在下载资源的同时，也可以查询其他记录，基于用户体验的问题，这里我们使用异步下载的方式，所以把下载代码放到<code>dispatch_async</code>异步加载的闭包里。</li>
+<li>数据资源以<code>CKAsset</code>实例的方式存放在<code>CKRecord</code>里，所以需要我们根据存在方式自行转换，这里提供的是<strong>File URL</strong>的方式进行本地加载。</li>
+<li>使用<code>UIImage</code>的实例方法加载本地二进制图像数据。</li>
+<li>当加载到图像之后我们会进行回调，请注意，无论执行哪个回调，此<code>defer block</code>都将被执行。例如，如果没有图像资源，则图像在返回时不会设置，餐厅不显示图像。</li>
+</ul>
+<p>现在再次运行App，看下图像是不是是在列表里已经被异步加载了。</p>
+<p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/Build-Run-2-With-Images.png" alt=""><br></p>
+
+<p>关于<strong>CloudKit</strong>资源有两个问题：</p>
+<ul>
+<li>二进制资源只能存在于CloudKit属性为<code>Assets</code>记录中。它们不能单独存在，删除记录也将删除任何关联的<code>Assets</code>资源。</li>
+<li>检索<code>Assets</code>资源可能造成性能影响，因为二进制资源与其他记录数据是同时在下载。如果您的应用程序大量使用<code>Assets</code>资源，那你就应该单独新建一个记录来存储这个<code>Assets</code>资源，并且与对应的记录数据的引用进行关联。</li>
+</ul>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>该<strong>Demo</strong>已经可以下载已经存在的记录，并且完整的显示数据信息和图片。<br>如果按照教程操作到最后，<strong>Demo</strong>并不能达到像我这样的效果，那我给你提供最终的<a href="/others/2017-07-10-Begining-CloudKit/BabiFud-Cloudkit-Final.zip">完整工程</a>，请自行检查。</p>
+<p>最后，你要是我给你几点建议完善这个Demo：</p>
+<ul>
+<li>用户可自行添加添加照片，备注，评论和投诉。</li>
+<li>用户可使用地图创建新的记录，<code>Model</code>类中的函数已经有了将记录保存到公共或私有数据库的示例代码。</li>
+<li>添加过滤和搜索，我们可以通过一个更复杂的距离谓词查询条件来进行精确筛选过滤。CloudKit还支持对字符串的文本搜索。</li>
+<li>提高应用程序的性能和数据加载体验。<code>CKDatabase</code>是基于<code>NSOperation</code>的实例，可以使用队列的方式来优化性能。</li>
+<li>提供缓存和数据同步，使应用程序在离线状态下也能照常显示已经缓存数据来刷新UI，并重新连接到网络的同时保持内容的更新。</li>
+</ul>
+<p>使用<code>CloudKit</code>，让我们可以使用伟大的Apple爸爸提供的后端API来提高用户体验和缩短开发流程。如果你对本教程有任何问题或意见，欢迎参与讨论！</p>
+<blockquote>
+<p>入门总体就这些了，深入的进阶我也在探索当中，如果你也想出道，阔以买件<a href="https://s.click.taobao.com/CTQd6gw" target="_blank" rel="external">窃·格瓦拉T恤</a>穿出去看会不会被打死，没死你就成功出道辣。。。</p>
 </blockquote>
 <p align="center"><br><img src="/images/2017-07-10-Begining-CloudKit/99.jpg" alt="窃·格瓦拉T恤"><br></p>
   </section>
