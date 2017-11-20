@@ -160,6 +160,25 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" title="link to post.title">UIView transitionFromView导致子视图Constraints失效</a></h2>
+      <p class="excerpt">
+    
+      
+项目开发需要实现一个简单的效果，一个音乐专辑，需要实现定时反复3D旋转的效果，这个效果很简单，利用iOS自带的动画接口对应的Flip动画即可，效果如下：
+
+开发的时候用Xib管理专辑两个子View，在使用UIView快速动画接口1+ (void)transitionFromView:(UIView *)fromView toView:(UIView *)toView duration:(NSTimeInterval)duration options:(UIViewAnimationOptions)options completion:(void (^ __nullable)(BOOL finished))completion;
+和UIViewAnimationOptionTransitionFlipFromLeft搭配使用的时候出现第一个奇怪的问题：动画执行之后在使用UIViewAnimationOptionTransitionFlipFromRight反转翻转效果出现的情况就是翻转一般View消失了，经过调试后发现，因为是使用Xib管理，所以Property声明是weak，就像这样：1@property (weak, nonatomic) IBOutlet UIView *coverContainer;
+所以fromView对应的子视图被系统管理在动画执行之后就被释放掉了，导致动画反转两次之后正反两个View都消失了。
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-05-19T03:58:19.000Z" class="post-list__meta--date date">5月 19 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Animation/">Animation</a>, <a class="tag-link" href="/tags/Layout/">Layout</a>
+</span><a class="btn-border-small" href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/05/05/2016-04-20-UICollectionViewLayout/" title="link to post.title">UICollectionView 布局自定义进阶</a></h2>
       <p class="excerpt">
     
@@ -310,21 +329,6 @@ Macports因为安装在/o
       <div class="post-list__meta"><time datetime="2015-07-13T11:13:44.000Z" class="post-list__meta--date date">7月 13 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/流水账/">流水账</a>
 </span><a class="btn-border-small" href="/2015/07/13/2015-07-13-Running-Account-2014-Nepal01/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/07/13/2015-07-12-Running-Account-2014-Zhangmu02/" title="link to post.title">14年流水账 - 樟木（二）</a></h2>
-      <p class="excerpt">
-    
-      今天计划还是不徒搭了，直接跟胖子商量看有米有定日到樟木的啥车都好，讨价还价便宜点就整上车，不然在这路上吃住一天说不定原地不动，花销比坐车还大。所以，今天是在318上的最后一天，啦啦啦😝😝😝
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2015-07-13T03:54:01.000Z" class="post-list__meta--date date">7月 13 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/流水账/">流水账</a>
-</span><a class="btn-border-small" href="/2015/07/13/2015-07-12-Running-Account-2014-Zhangmu02/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
