@@ -170,7 +170,32 @@
   </header>
 
   <section class="post">
-    
+    <blockquote>
+<p>在本章节中，你将学习RxSwift的基础知识。你将看到RxSwift解决哪些类型的异步编程问题，以及它提供的解决方案。<br>此外，本次还会学习几个基本的类，它们允许你创建和观察事件序列，这是Rx框架的基础。<br>通过学习基础知识和理论，并掌握，当需求变得复杂时才能处理地更得心应手。请不要跳过这些章节！</p>
+</blockquote>
+<h1 id="Hello-RxSwift"><a href="#Hello-RxSwift" class="headerlink" title="Hello RxSwift"></a>Hello RxSwift</h1><blockquote>
+<p>RxSwift是什么，RxSwift是一个库，用于通过使用可观察序列和操作符来组合基于事件的异步代码，从而优化函数体的调度参数。</p>
+</blockquote>
+<p>听起来很复杂是吗？Don’t Worry！！！编写响应式程序，需要我们理解其背后的许多概念，以及浏览大量相关的常用术语，这肯定会让人感到恐惧，所谓万事开头难，你自己克服下囖。<br>本次学习我们会一次介绍各个API及其用法，并在实际的例子和项目中进行实战，让我们可以更好的理解RxSwift的API以及Rx的编程概念。</p>
+<blockquote>
+<p>本次学习是RxSwift主题，奉劝如果脑子里还没有异步的概念，还是就此打住吧，后面内容挺多，你吃不消的。</p>
+</blockquote>
+<h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><ul>
+<li><strong>状态，可变状态：</strong>状态这个词很难定界，各人理解不同，一个通俗的例子就是，比如你的PC，开机的时候都多正常的，Windows跑上三五天，Mac跑上几个月，就会出现很多怪异的问题，装机前辈告知的都是电脑有问题先重启，不行再重装，Windows尽量不要想着修复，耗上三五天只会越修复越奇怪。在软硬件不变的情况下，这里面的问题就是系统状态出了问题，有可能是内存，硬盘或者日志的一些东西导致，尤其是系统状态是多应用之间共享的可变状态。</li>
+<li><p><strong>命令式编程：</strong>它就和面向过程的C一样，没有方法，只有函数。你只需要把你各自的小功能封装成函数，调用函数执行即可。函数就想命令，比如你让你家的汪，躺下，跳起来一样。。。<br>比如这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">override func viewDidAppear(_ animated: Bool) &#123;</div><div class="line">  super.viewDidAppear(animated)</div><div class="line">  setupUI()</div><div class="line">  connectUIControls()</div><div class="line">  createDataSource()</div><div class="line">  listenForChanges()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>副作用：</strong>涉及到状态这种情况就会有副作用的产，比如有一个全局变量，很多地方都在改变其状态，那就不仅有作用，一定还有很多隐性bug的产生，这里就不多缀诉。</p>
+</li>
+<li><strong>声明代码：</strong>在命令式编程中，你可以随意更改状态而不会造成任何副作用。RxSwift结合了命令代码和功能代码最好的方面来为你保驾护航。</li>
+<li><strong>响应式系统：</strong>让UI组件根据不同的应用状态保持最新显示。组件基于消息的通信来改进，高可重用性和隔离性，将类的生命周期和实现分开，更易测试。</li>
+</ul>
+<h3 id="RxSwift的基础"><a href="#RxSwift的基础" class="headerlink" title="RxSwift的基础"></a>RxSwift的基础</h3><p>响应式编程不是一个新概念，它已经存在了相当长的一段时间，但是其核心概念在过去的十年中已经引起了强势回归。<br>在此期间，Web应用已经变得越来越复杂，并且正面临着管理复杂的异步UI问题。在服务器端，响应式系统已经势在必行。<br>Rx是微软团队在2009年左右，提供了一个名为Reactive Extensions for .NET（Rx）的新客户端和服务器端框架。<br>它是.NET 3.5的可安装插件，后来成为.NET 4.0中的一个内置的核心库。自2012年以来，它一直是一个开源组件。开源代码允许其他语言和平台重新实现相同的功能，从而使Rx成为跨平台的标准。<br>而有今天的RxJS，RxJava，RxKotlin，Rx.NET，RxScala，RxSwift等等。这些库都在努力实现相同的行为和相同的表达API。最终，通过使用RxSwift创建iOS应用的开发也可以在Web上使用RxJS与另一位程序狗自由讨论应用逻辑问题。<br>和最初的Rx一样，RxSwift也适用于迄今为止所涉及的所有概念：它处理可变状态，它允许编写事件序列并改进体系结构概念，例如代码隔离，可重用性和解耦。</p>
+<blockquote>
+<p>更多关于Rx的问题可以访问他们主页：<a href="http://reactivex.io/" target="_blank" rel="external">http://reactivex.io/</a></p>
+</blockquote>
+<p>废话了一大堆，终于可以进入主题，让我们开始<code>observables</code>，<code>operators</code>和<code>schedulers</code>的学习。</p>
+<h1 id="Observables"><a href="#Observables" class="headerlink" title="Observables"></a>Observables</h1><h1 id="Subjects"><a href="#Subjects" class="headerlink" title="Subjects"></a>Subjects</h1><h1 id="动手实践"><a href="#动手实践" class="headerlink" title="动手实践"></a>动手实践</h1>
   </section>
 
 </article>
