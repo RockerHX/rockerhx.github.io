@@ -160,6 +160,25 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2016/05/31/2016-05-31-Failed-Import-Bridging-Header/" title="link to post.title">Failed to import bridging header 的奇葩解决方案</a></h2>
+      <p class="excerpt">
+    
+      本人是个升级控，只要有需要升级的看看日志没啥问题就开整，等了大半年的Cocoapods的1.0.0终于出正式版本了，介于0.38.0到0.39.0的痛苦过程，心里有点小担心，不过那时还好是Objective-C，问题出在配置上都可以stackoverflow解决，这次要面对这次还要多面临Swift的挑战，废话太多了，直接开整。
+升级的过程还是老套路：
+1sudo gem install cocoapods
+老套路还是还是老问题/usr下路径权限不够，试着改变权限：
+1sudo chown $(whoami):admin /usr/local &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/local
+1sudo chown $(whoami):admin /usr/bin &amp;amp;&amp;amp; sudo chown -R $(whoami):admin /usr/bin
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2016-05-30T16:06:05.000Z" class="post-list__meta--date date">5月 31 2016</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2016/05/31/2016-05-31-Failed-Import-Bridging-Header/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2016/05/19/2016-05-19-UIView-transitionFromView-Error/" title="link to post.title">UIView transitionFromView导致子视图Constraints失效</a></h2>
       <p class="excerpt">
     
@@ -288,22 +307,6 @@ Macports因为安装在/o
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-07-UIAppearanceTutorial/" title="link to post.title">UIAppearance教程：入门</a></h2>
-      <p class="excerpt">
-    
-      开发了App这么久，是不是觉得主题功能很繁琐，那么接下来良辰我将动用北京的势力来指导你如何为你的App增加主题功能。
-原文：http://www.raywenderlich.com/108766/uiappearance-tutorial转载请注明出处：http://www.rockerhx.com/2015/09/07/2015-09-07-UIAppearanceTutorial/
-主题教程：现在开始虽然拟物化在iOS里已是过去式，这并不意味着你的iOS应用控件就限于原始外观。虽然你可以从头开始开发自己自定义控件，Apple官方还是建议您使用标准UIKit控件并且利用这各种自定义技术优势。这是因为，UIKit的控制更高效，并且这种自定义控件是在给未来铺路。在本UIAppearance教程中，您将使用一些基本的UI自定义技术来定制一个普通的宠物搜索应用，并使其脱颖而出！ ：]
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Theme/">Theme</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
-</span><a class="btn-border-small" href="/2015/09/07/2015-09-07-UIAppearanceTutorial/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
       <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" title="link to post.title">Xcode7下使用git提交报错</a></h2>
       <p class="excerpt">
     
@@ -319,16 +322,17 @@ Macports因为安装在/o
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2015/07/13/2015-07-13-Running-Account-2014-Nepal01/" title="link to post.title">14年流水账 - 尼泊尔（一）</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-07-UIAppearanceTutorial/" title="link to post.title">UIAppearance教程：入门</a></h2>
       <p class="excerpt">
     
-      早上起来发现室友全散了，除了我跟胖子，整个青旅基本上没剩下什么人，各方消息都说樟木到加都的路断了，每天都有一大波印度人过关，完了过关会被堵成煞笔，你们这整的太早了，才八点不到，樟木也就刚天亮。到楼下发现全都在前台寄存包裹，纠结了半天，想想帐篷等户外装备还是不要搞过去了，据说穿越堰塞湖要翻三座深山，负重就不说了，带过去也没什么屌用，果断还是寄存吧~~~
-如果从樟木过关，切记只带必要的装备过去（虽然15年地震，樟木已经回了，就算是从现在的吉隆过关也是一个意思）。
+      开发了App这么久，是不是觉得主题功能很繁琐，那么接下来良辰我将动用北京的势力来指导你如何为你的App增加主题功能。
+原文：http://www.raywenderlich.com/108766/uiappearance-tutorial转载请注明出处：http://www.rockerhx.com/2015/09/07/2015-09-07-UIAppearanceTutorial/
+主题教程：现在开始虽然拟物化在iOS里已是过去式，这并不意味着你的iOS应用控件就限于原始外观。虽然你可以从头开始开发自己自定义控件，Apple官方还是建议您使用标准UIKit控件并且利用这各种自定义技术优势。这是因为，UIKit的控制更高效，并且这种自定义控件是在给未来铺路。在本UIAppearance教程中，您将使用一些基本的UI自定义技术来定制一个普通的宠物搜索应用，并使其脱颖而出！ ：]
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2015-07-13T11:13:44.000Z" class="post-list__meta--date date">7月 13 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/流水账/">流水账</a>
-</span><a class="btn-border-small" href="/2015/07/13/2015-07-13-Running-Account-2014-Nepal01/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Theme/">Theme</a>, <a class="tag-link" href="/tags/iOS/">iOS</a>
+</span><a class="btn-border-small" href="/2015/09/07/2015-09-07-UIAppearanceTutorial/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
