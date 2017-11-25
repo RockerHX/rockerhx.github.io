@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>升级OS X El Capitan导致Homebrew权限失效 | Andy矢倉</title>
+    <title>RxSwift从零入手 - 入门·Observables | Andy矢倉</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="升级OS X El Capitan导致Homebrew权限失效 | Andy矢倉">
+    <meta name="twitter:title" content="RxSwift从零入手 - 入门·Observables | Andy矢倉">
     <meta name="twitter:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="升级OS X El Capitan导致Homebrew权限失效 | Andy矢倉">
+    <meta property="og:title" content="RxSwift从零入手 - 入门·Observables | Andy矢倉">
     <meta property="og:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://rockerhx.github.io/2015/10/02/2015-10-02-OSX-10.11-Homebrew-Issue/"/>
+    <link rel="canonical" href="http://rockerhx.github.io/2017/11/21/2017-11-21-RxSwift-Begining-2-Getting-Started-Observables/"/>
 
                  
 </head>
@@ -158,21 +158,39 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2015-10-02T02:35:00.000Z" class="post-list__meta--date date">10月 2 2015</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Homebrew/">Homebrew</a>, <a class="tag-link" href="/tags/Term/">Term</a>
+      <time datetime="2017-11-21T09:17:48.000Z" class="post-list__meta--date date">11月 21 2017</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/RxSwift/">RxSwift</a>, <a class="tag-link" href="/tags/Swift4/">Swift4</a>
  </span>
       <span class="page-pv">
       &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">升级OS X El Capitan导致Homebrew权限失效</h1>
+    <h1 class="post-title">RxSwift从零入手 - 入门·Observables</h1>
   </header>
 
   <section class="post">
-    <p>昨天刚升级了Homebrew，今天使用Homebrew导致权限不够，找资料看到因为OS X El Capitan引入了系统完整性保护机制，所以使用Homebrew的同学请在升级后在终端执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo chown $(whoami):admin /usr/local &amp;&amp; sudo chown -R $(whoami):admin /usr/local</div></pre></td></tr></table></figure></p>
-<p>Macports因为安装在/opt下所以不受此次升级的影响。</p>
-
+    <blockquote>
+<p>在本章节中，你将学习RxSwift的基础知识。你将看到RxSwift解决哪些类型的异步编程问题，以及它提供的解决方案。<br>此外，本次还会学习几个基本的类，它们允许你创建和观察事件序列，这是Rx框架的基础。<br>通过学习基础知识和理论，并掌握，当需求变得复杂时才能处理地更得心应手。请不要跳过这些章节！</p>
+</blockquote>
+<h1 id="Observables"><a href="#Observables" class="headerlink" title="Observables"></a>Observables</h1><p>什么是observable，它是Rx的核心。接下来我们提到的<code>observable</code>，<code>observable sequence</code>和<code>sequence</code>其实都可以理解成序列，你也可以理解成流，不过RxSwift里一般都是说序列，不会说流这个东西，反正你这个概念就阔以了。</p>
+<p><code>Observable</code>只是一个会产生各种事件的序列，当有订阅者订阅各种事件的时候，就会得到相应的事件和值，这些值就和之前提到的一样，可以数值，字符串，甚至是自定义的实例，比如点击事件等。</p>
+<p>不过为了更好的理解，我们还是直接上图示比较好（看成时间流即可）。<br><img src="/images/2017-11-21-RxSwift-Begining-2-Getting-Started-Observables/01.png" align="center" width="75%" height="75%"></p>
+<p>从左到右的箭头表示时间，编号的圆圈表示序列的元素。元素1将被发射，一段时间之后会发射2和3。你问具体时间？它可能在整个可观察的生命周期中的任何时候。</p>
+<blockquote>
+<p>observable以后我们都会称其为被观察者。</p>
+</blockquote>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>在上述的图示里已经展示了被观察者根据时间的飘逸会不断发出一个个元素。下面我们看看点击事件的图示，其实都是一样的。<br><img src="/images/2017-11-21-RxSwift-Begining-2-Getting-Started-Observables/02.png" align="center" width="75%" height="75%"></p>
+<p>这个可观察的序列发出三个点击事件，然后结束。这里称为已完成的事件。observable已经终止，就不会再发射任何东西。这是正常的终止。如果有是遇到出错呢。<br><img src="/images/2017-11-21-RxSwift-Begining-2-Getting-Started-Observables/03.png" align="center" width="75%" height="75%"></p>
+<p>这个图示就是出错的示例。出错由红X表示。observable发出一个包含错误的事件。这与观察者正常结束并完成事件一样。如果一个observable发出一个错误事件，它也会被终止，也不能再发射任何东西。</p>
+<p>我们来简单回顾一下，被观察者发出包含元素的下一事件后，如果需要完成，那就是：</p>
+<ul>
+<li>出错而终止，或是</li>
+<li>完成事件而终止。<br>以上者两种终止都将导致被观察的序列停止发射新的事件。源码如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/// Represents a sequence event.</div><div class="line">///</div><div class="line">/// Sequence grammar:</div><div class="line">/// **next\* (error | completed)**</div><div class="line">public enum Event&lt;Element&gt; &#123;</div><div class="line">    /// Next element is produced.</div><div class="line">    case next(Element)</div><div class="line">    /// Sequence terminated with an error.</div><div class="line">    case error(Swift.Error)</div><div class="line">    /// Sequence completed successfully.</div><div class="line">    case completed</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在这里你可以看到，.next事件包含了一些Element的实例，.error事件包含了一个Swift.Error的实例，并且.completed事件只是停止事件，不包含任何数据。<br>现在你明白了可观察序列是什么以及它是做什么了，我们将创建一些可观察的事物来观察它们的行为。</p>
+<h3 id="创建observables"><a href="#创建observables" class="headerlink" title="创建observables"></a>创建observables</h3>
   </section>
 
 </article>
@@ -180,37 +198,24 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2015/10/27/2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete/" title="REFrostedViewController与UITableViewCell侧滑删除的坑">REFrostedViewController与UITableViewCell侧滑删除的坑</a></h2>
-                <p class="excerpt">
-                
-                近来项目中需要用到侧滑菜单，测试了一下REFrostedViewController还能满足需求，本着不重复造轮子的原则，决定使用。
-根据作者：romaonthego提供的Demo玩起来比较嗨，一看就明白，于是乎我也搞了个UINavigationController加入UIPanGestureRecognizer手势来实时移动菜单，所有的视图控制器都在这个UINavigationController的管理下健康成长。
-直到我接到一个需求是表格侧滑删除（也就是Cell的侧滑删除），心想这特么多简单回事，看着这需求，还偷着乐，Android那逼蛋疼了（听说是不好整，具体我也不知道），直接用系统提供的代理三下五除二搞定，那就在这时准备丝滑一下的时候，采坑了。
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2015-10-26T18:15:52.000Z" class="post-list__meta--date date">10月 27 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/REFrostedViewController/">REFrostedViewController</a>, <a class="tag-link" href="/tags/UITableView/">UITableView</a>
-</span><a class="btn-border-small" href="/2015/10/27/2015-10-27-REFrostedViewController-UITableViewCell-Swipe-Delete/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">更早的文章</span>
-                <h2 class="post-list__post-title post-title"><a href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/" title="Xcode7下使用git提交报错">Xcode7下使用git提交报错</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/20/2017-11-20-RxSwift-Begining-1-Introduction/" title="RxSwift从零入手 - 介绍">RxSwift从零入手 - 介绍</a></h2>
                 <p class="excerpt">
                 
-                最近升级了Xcode7，一打开老工程就各种报警告，由于我洁癖癌晚期，一定要从本质上消灭掉警告心里才舒坦，几个小警告，秒秒钟搞定，最后把工程配置文件也升级了，run起来没有警告那叫一个爽啊，舒坦！！！
-然后，过了几天，commit的时候出现这逼提示：12345678910111213The working copy “***” failed to commit files.*** Please tell me who you are.Run  git config --global user.email &amp;quot;you@example.com&amp;quot;  git config --global user.name &amp;quot;Your Name&amp;quot;to set your account&amp;apos;s default identity.Omit --global to set the identity only in this repository.fatal: unable to auto-detect email address (got &amp;apos;***@bogon.(none)&amp;apos;)
+                
+译自：Introducing RxSwift: Reactive Programming with Swift!
+
+简介
+“If you’ve ever used an asynchronous callback based API, you’ve probably dealt with hand
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2015-09-07T13:23:30.000Z" class="post-list__meta--date date">9月 7 2015</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/Git/">Git</a>, <a class="tag-link" href="/tags/Xcode/">Xcode</a>
-</span><a class="btn-border-small" href="/2015/09/07/2015-09-23-Xocde7-Git-Commit-Issue/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-11-20T09:17:48.000Z" class="post-list__meta--date date">11月 20 2017</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/RxSwift/">RxSwift</a>, <a class="tag-link" href="/tags/Swift4/">Swift4</a>
+</span><a class="btn-border-small" href="/2017/11/20/2017-11-20-RxSwift-Begining-1-Introduction/">继续阅读</a></div>
                        
             </div>
         
