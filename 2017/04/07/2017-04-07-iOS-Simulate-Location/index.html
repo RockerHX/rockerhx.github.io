@@ -189,19 +189,19 @@
 <blockquote>
 <p>在遥远的东方，有一个天朝。<br>天朝有一个测绘局，发明了一种把美国卫星的GPS的地球坐标，进行偏移的算法，计算后，得出了一个火星坐标。<br>为了让火星坐标能正确的显示，又给每部导航软件加入了这个算法，可以在大家的地图上还原位置。并且给每部导航收费。美其名国家安全。而且这个算法看上去很牛B的样子，还不可逆。<br>所以，只有这个国家的人都在用错误的坐标。正宗的掩耳盗铃。<br>民用卫星精度都已经让你出身冷汗了，何况军用卫星。打仗估值也不会用中国的电子地图吧。<br>只可惜各种LBS应用，都是个麻烦事哦。</p>
 </blockquote>
-<p>还好黄天不负有心人，终于经过大家的模拟，计算，基本还原了<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="external">飘逸算法</a>。</p>
+<p>还好黄天不负有心人，终于经过大家的模拟，计算，基本还原了<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="noopener">飘逸算法</a>。</p>
 <h3 id="选技师"><a href="#选技师" class="headerlink" title="选技师"></a>选技师</h3><p>坐标获取入口：</p>
 <ul>
-<li><a href="http://lbs.amap.com/console/show/picker" target="_blank" rel="external">高德</a></li>
-<li><a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank" rel="external">百度</a></li>
+<li><a href="http://lbs.amap.com/console/show/picker" target="_blank" rel="noopener">高德</a></li>
+<li><a href="http://api.map.baidu.com/lbsapi/getpoint/index.html" target="_blank" rel="noopener">百度</a></li>
 </ul>
 <p>首先，根据各自的喜好，选好你想要模拟的位置，这里以高德地图为例：</p>
 <p align="center"><br><img src="/images/2017-04-07-iOS-Simulate-Location-md/0.png"><br></p>
 
-<p>可以看到右边有显示坐标 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">104.06521,30.589833</div></pre></td></tr></table></figure></p>
-<h3 id="上钟"><a href="#上钟" class="headerlink" title="上钟"></a>上钟</h3><p>iPhone所需要的坐标是<strong>WGS-84</strong>，我们获取的是<strong>GCJ-02</strong>，这里我们利用最新<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="external">飘逸还原算法</a>来转换出你所需要的真实坐标。</p>
-<p>我所在的定位<strong>四川省成都市ACC中航城市广场</strong>原始坐标为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">104.06263069384391,30.593234492328744</div></pre></td></tr></table></figure></p>
-<h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><p>这里我们需要新建一个<strong>gpx</strong>文件，包含坐标用于模拟定位。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">gpx</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></div><div class="line">    <span class="attr">creator</span>=<span class="string">"GMapToGPX 6.4j - http://www.elsewhere.org/GMapToGPX/"</span></div><div class="line">    <span class="attr">xmlns</span>=<span class="string">"http://www.topografix.com/GPX/1/1"</span></div><div class="line">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">wpt</span> <span class="attr">lat</span>=<span class="string">"30.593234492328744"</span> <span class="attr">lon</span>=<span class="string">"104.06263069384391"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">wpt</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">gpx</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>可以看到右边有显示坐标 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">104.06521,30.589833</span><br></pre></td></tr></table></figure></p>
+<h3 id="上钟"><a href="#上钟" class="headerlink" title="上钟"></a>上钟</h3><p>iPhone所需要的坐标是<strong>WGS-84</strong>，我们获取的是<strong>GCJ-02</strong>，这里我们利用最新<a href="https://github.com/googollee/eviltransform.git" target="_blank" rel="noopener">飘逸还原算法</a>来转换出你所需要的真实坐标。</p>
+<p>我所在的定位<strong>四川省成都市ACC中航城市广场</strong>原始坐标为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">104.06263069384391,30.593234492328744</span><br></pre></td></tr></table></figure></p>
+<h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><p>这里我们需要新建一个<strong>gpx</strong>文件，包含坐标用于模拟定位。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">gpx</span> <span class="attr">version</span>=<span class="string">"1.1"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">creator</span>=<span class="string">"GMapToGPX 6.4j - http://www.elsewhere.org/GMapToGPX/"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns</span>=<span class="string">"http://www.topografix.com/GPX/1/1"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">wpt</span> <span class="attr">lat</span>=<span class="string">"30.593234492328744"</span> <span class="attr">lon</span>=<span class="string">"104.06263069384391"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">wpt</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">gpx</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>根据不同位置不同把转换得到的原始坐标对应到<strong>lat</strong>和<strong>lon</strong>里面即可。</p>
 <blockquote>
 <p>记得先把手机定位打开。</p>
@@ -221,7 +221,7 @@
 </ul>
 </blockquote>
 <p>中午测试了下摩拜的红包车，如果我的手机定位没有改变，无论骑行多远，骑行距离都是0米，红包也只有一块（一中午四辆红包车均是如此）。看到这里应该不用我告诉你怎么撸红包了吧，撸红包的成本还是相对较高，必须随时背着电脑，如果公司没有开启WiFi打开，你又恰巧背了电脑，那就真的能随时随地打卡了。</p>
-<p><strong>Demo：</strong><a href="https://github.com/rockerhx/SimulateLocation" target="_blank" rel="external">https://github.com/rockerhx/SimulateLocation</a></p>
+<p><strong>Demo：</strong><a href="https://github.com/rockerhx/SimulateLocation" target="_blank" rel="noopener">https://github.com/rockerhx/SimulateLocation</a></p>
 
   </section>
 

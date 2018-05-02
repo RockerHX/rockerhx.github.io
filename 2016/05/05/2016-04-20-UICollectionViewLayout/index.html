@@ -172,7 +172,7 @@
   <section class="post">
     <blockquote>
 <p><strong>注意：</strong>本文的<code>UICollectionView</code>自定义是采用继承<code>UICollectionViewLayout</code>类的方式来自定义布局，而非系统默认使用<code>UICollectionViewFlowLayout</code>类来修改参数的方式。</p>
-<p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)prepareLayout;</div><div class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</div><div class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</div></pre></td></tr></table></figure></p>
+<p><strong>【必须】定制UICollectionViewLayout必须覆盖的方法且执行顺序如下：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)prepareLayout;</span><br><span class="line">- (<span class="built_in">CGSize</span>)collectionViewContentSize;</span><br><span class="line">- (<span class="built_in">NSArray</span>&lt;<span class="built_in">UICollectionViewLayoutAttributes</span> *&gt; *)layoutAttributesForElementsInRect:(<span class="built_in">CGRect</span>)rect;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <a id="more"></a>
 <ul>
@@ -195,7 +195,7 @@
 </li>
 </ul>
 <blockquote>
-<p><strong>【可选】交互定制方法：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)shouldInvalidateLayoutForBoundsChange:(<span class="built_in">CGRect</span>)newBounds;</div><div class="line">- (<span class="built_in">CGPoint</span>)targetContentOffsetForProposedContentOffset:(<span class="built_in">CGPoint</span>)proposedContentOffset withScrollingVelocity:(<span class="built_in">CGPoint</span>)velocity;</div></pre></td></tr></table></figure></p>
+<p><strong>【可选】交互定制方法：</strong><br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">BOOL</span>)shouldInvalidateLayoutForBoundsChange:(<span class="built_in">CGRect</span>)newBounds;</span><br><span class="line">- (<span class="built_in">CGPoint</span>)targetContentOffsetForProposedContentOffset:(<span class="built_in">CGPoint</span>)proposedContentOffset withScrollingVelocity:(<span class="built_in">CGPoint</span>)velocity;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <ul>
 <li><strong><code>shouldInvalidateLayoutForBoundsChange:</code>：</strong><br>如果返回YES，那么collectionView显示的范围发生改变时，就会重新刷新布局。<br>一旦重新刷新布局，就会按顺序调用下面的方法：<ul>
@@ -227,7 +227,7 @@
 <blockquote>
 <ul>
 <li>这里如果是做单卡的分页悬停，只需要处理<code>向量速度</code>和实时偏移量也就是<code>contentOffset</code>，再判断卡片的<code>中线位置</code>和<code>偏移量</code>的关系来决定是要悬停在上一张还是下一张卡。<ul>
-<li>这里推荐一个单卡分页悬停的第三方库以供代码参考：<a href="https://github.com/betzerra/EBCardCollectionViewLayout" target="_blank" rel="external">EBCardCollectionViewLayout</a></li>
+<li>这里推荐一个单卡分页悬停的第三方库以供代码参考：<a href="https://github.com/betzerra/EBCardCollectionViewLayout" target="_blank" rel="noopener">EBCardCollectionViewLayout</a></li>
 </ul>
 </li>
 <li>如果是拖拽悬停，也就是任意拖拽，在最后停止的位置做悬停校正，就根据卡片的位置大小来处理是需要判断<code>中线</code>还是<code>边线</code>。<ul>

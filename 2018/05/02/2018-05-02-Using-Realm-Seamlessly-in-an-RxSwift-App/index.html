@@ -181,7 +181,7 @@
 <blockquote>
 <p>懒魔福利：<a href="/others/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/RealmGitHubSearchRxDemo-master.zip">源码</a>。</p>
 </blockquote>
-<p>做这个简单的小应用可以自行搭建工程，自行采用适合的架构即可，不一定非要MVVM，只需要能搜索到如下三种语言结果即可：<br><img src="/images/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/01.png" align="center" width="75%" height="75%"></p>
+<p>做这个简单的小应用可以自行搭建工程，自行采用适合的架构即可，不一定非要MVVM，只需要能搜索到如下三种语言结果即可：<br><img src="/images/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/01.png" align="center" width="50%" height="50%"></p>
 <h2 id="接口交互"><a href="#接口交互" class="headerlink" title="接口交互"></a>接口交互</h2><blockquote>
 <p>稍微提醒下，以下几部分代码都是基于你对RxSwift和RxCocoa有所了解，如果还有不了解的请转至文首部分。</p>
 </blockquote>
@@ -212,6 +212,14 @@
 <li>结果的更改将通过上述订阅完成，因此也能更新表格视图</li>
 </ul>
 <p>Nice，该应用具有本地缓存​​，因此它可以脱机工作以及在线工作。所以，它会显示即时结果，如果本地没有任何缓存，它也会处理来自网络的响应！</p>
+<p>最后我们把搜索到服务端返回的结果，保存并显示出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Table view magic</span><br><span class="line">if let changes = changes &#123;</span><br><span class="line">  tableView.beginUpdates()</span><br><span class="line">  tableView.insertRowsAtIndexPaths(changes.inserted.map &#123; NSIndexPath(forRow: $0, inSection: 0) &#125;,</span><br><span class="line">    withRowAnimation: .Automatic)</span><br><span class="line">  tableView.endUpdates()</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  tableView.reloadData()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>为了尽快展示本地搜索结果，我们调用tableView.reloadData()。相反，为了使通过网络返回的新结果更加明显，我们使用动画进行更新。</p>
+<blockquote>
+<p>注意：因为在这个演示中我们只添加到本地缓存中，所以我们只关心changes.inserted。如果你还期望对象更新或删除，你应该处理changes.updated和changes.deleted。有关更多如何使用变更通知，请查看<a href="https://realm.io/news/marin-todorov-fine-grained-notifications/?_ga=2.16243894.1200388182.1525165111-1103873873.1500554371" target="_blank" rel="noopener">此帖</a>。</p>
+</blockquote>
+<h1 id="最终测试"><a href="#最终测试" class="headerlink" title="最终测试"></a>最终测试</h1><p>让我们运行应用并搜索“animation”并尝试“Swift”和“Objective-C”之间切换来观察结果：<br><img src="/images/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/02.gif" align="center" width="50%" height="50%"></p>
+<p>接着我们来测试本地和网络同时筛选的情况，根据第一条的关键字Easy来搜索：<br><img src="/images/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/03.gif" align="center" width="50%" height="50%"><br>正如看到的，本地结果会立刻展示，网络请求得到的结果会通过动画的形式展现出来。</p>
+<p>最后测试删除结果，并清空列表：<br><img src="/images/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/04.gif" align="center" width="50%" height="50%"></p>
 
   </section>
 
