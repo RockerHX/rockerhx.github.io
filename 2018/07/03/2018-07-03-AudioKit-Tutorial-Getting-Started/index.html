@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐</title>
+    <title>AudioKit 入门教程 | Andy矢倉</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐">
+    <meta name="twitter:title" content="AudioKit 入门教程 | Andy矢倉">
     <meta name="twitter:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Andy矢倉 | 老板 来杯董小姐 去冰 少糖 多放点小姐">
+    <meta property="og:title" content="AudioKit 入门教程 | Andy矢倉">
     <meta property="og:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
 
     
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://rockerhx.github.io"/>
+    <link rel="canonical" href="http://rockerhx.github.io/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/"/>
 
                  
 </head>
@@ -154,70 +154,67 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
-    
-  <ol class="post-list">
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/" title="link to post.title">AudioKit 入门教程</a></h2>
-      <p class="excerpt">
-    
-      
-原文：AudioKit Tutorial: Getting Started作者：Colin Eberhardt同时感谢：kmyhy
+            <article class="post-container post-container--single">
 
-
-
-近来手上有一些音频相关的开发工作，搜搜基Hub，目前最为强大，性能屌爆，编码炫酷的开源库也只有AudioKit了。Raywenderlich也能找到相关教程，介于作者是3.0+的教程，很多代码都不能跑了，特此整理一趴。本文不仅是一篇iOS开发教程，更是一篇精彩
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-07-03T15:01:11.000Z" class="post-list__meta--date date">7月 3 2018</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-07-03T15:01:11.000Z" class="post-list__meta--date date">7月 3 2018</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Audio/">Audio</a>, <a class="tag-link" href="/tags/AudioKit/">AudioKit</a>, <a class="tag-link" href="/tags/Swift4/">Swift4+</a>, <a class="tag-link" href="/tags/Xcode9/">Xcode9+</a>
-</span><a class="btn-border-small" href="/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
+ </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">AudioKit 入门教程</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>原文：<a href="https://www.raywenderlich.com/145770/audiokit-tutorial-getting-started" target="_blank" rel="noopener">AudioKit Tutorial: Getting Started</a><br>作者：<a href="https://www.raywenderlich.com/u/colineberhardt" target="_blank" rel="noopener">Colin Eberhardt</a><br>同时感谢：<a href="http://blog.csdn.com/kmyhy" target="_blank" rel="noopener">kmyhy</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>近来手上有一些音频相关的开发工作，搜搜<a href="https://github.com/" target="_blank" rel="noopener">基Hub</a>，目前最为强大，性能屌爆，编码炫酷的开源库也只有<a href="https://audiokitpro.com/" target="_blank" rel="noopener">AudioKit</a>了。<code>Raywenderlich</code>也能找到相关教程，介于作者是3.0+的教程，很多代码都不能跑了，特此整理一趴。<br>本文不仅是一篇iOS开发教程，更是一篇精彩的科普文。关于编程与艺术的结合，声学物理与音乐的碰撞，尽在此文。推荐所有程序员都好好读一读它，让我们的生活除了代码，还有艺术，还有音乐。感谢作者<a href="https://www.raywenderlich.com/u/colineberhardt" target="_blank" rel="noopener">Colin Eberhardt</a>。</p>
+</blockquote>
+<p>iOS 设备提供了丰富的多媒体体验，比如绚丽的视觉效果、声音和可触摸的交互界面。尽管能够使用各种各样的特性，但作为开发者，我们更多地关注了应用的视觉设计，而忽略了用户体验的声学效果。</p>
+<p><code>AudioKit</code>是一个高级音频框架，由声学设计师、程序员和音乐家为 iOS 专门打造。AudioKit底层混合了<code>Swift</code>、<code>Objective-C</code>、<code>C++</code>和<code>C</code>，负责和苹果音频已硬件的Api打交道。所有神奇（同时十分复杂的）技术都封装成为极其友好的 Swift Api ，你甚至可以直接在<code>Xcode</code>的<code>Playground</code>中使用它。</p>
+<p>本文无法全面覆盖 AudioKit 的知识点。相反，我们会通过介绍声音合成和计算机声频的历史，来带你进行一次有趣和时尚的 AudioKit 之旅。通过这种方式，你会学到基本的声学物理，了解早期的合成器比如电子琴是如何工作的。最终来到现代，一个大混音时代。</p>
+<p>请给自己来一杯咖啡，拖过一张椅子，开始我们的旅程！</p>
+<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/AudioKit-feature.png" align="center" width="50%" height="50%"></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/05/02/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/" title="link to post.title">RxSwift实战操作·Realm应用</a></h2>
-      <p class="excerpt">
-    
-      
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/02/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/" title="RxSwift实战操作·Realm应用">RxSwift实战操作·Realm应用</a></h2>
+                <p class="excerpt">
+                
+                
 此部分对于对于ReactiveX就不单独介绍了，详情请转至：ReactiveX website或者RxSwift GitHub repo
 
-从RxRealm入手我们可以通过CocoaPods简单的安装使用RxRealm这个extension：pod ‘RxRealm’，或者自行安装，详情参考文档source code from GitHub。这个库是封装好的Realm信号量集合。我们可以通过简单
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-05-02T03:25:48.000Z" class="post-list__meta--date date">5月 2 2018</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+从RxRealm入手我们可以通过CocoaPods简单的安装使用RxRealm这个extension：pod ‘RxRealm’，或者自行安装，详情参考文档s
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-05-02T03:25:48.000Z" class="post-list__meta--date date">5月 2 2018</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
   <a class="tag-link" href="/tags/Realm/">Realm</a>, <a class="tag-link" href="/tags/RxSwift/">RxSwift</a>, <a class="tag-link" href="/tags/Swift4/">Swift4</a>
 </span><a class="btn-border-small" href="/2018/05/02/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-  </ol>
-
-
- <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
-    
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</div>
-
+</section>
 
             <footer class="footer">
     <span class="footer__copyright">
