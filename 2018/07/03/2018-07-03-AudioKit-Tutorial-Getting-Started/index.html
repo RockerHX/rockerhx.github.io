@@ -181,8 +181,21 @@
 <p><code>AudioKit</code>是一个高级音频框架，由声学设计师、程序员和音乐家为 iOS 专门打造。AudioKit底层混合了<code>Swift</code>、<code>Objective-C</code>、<code>C++</code>和<code>C</code>，负责和苹果音频已硬件的Api打交道。所有神奇（同时十分复杂的）技术都封装成为极其友好的 Swift Api ，你甚至可以直接在<code>Xcode</code>的<code>Playground</code>中使用它。</p>
 <p>本文无法全面覆盖 AudioKit 的知识点。相反，我们会通过介绍声音合成和计算机声频的历史，来带你进行一次有趣和时尚的 AudioKit 之旅。通过这种方式，你会学到基本的声学物理，了解早期的合成器比如电子琴是如何工作的。最终来到现代，一个大混音时代。</p>
 <p>请给自己来一杯咖啡，拖过一张椅子，开始我们的旅程！</p>
-<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/AudioKit-feature.png" align="center" width="50%" height="50%"></p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2>
+<p></p><p><br><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/01.AudioKit-feature.png" align="center" width="30%" height="30%"></p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><blockquote>
+<p>原教程的原始内容使用的是 3.4.0 版本，用的是Playground做案例，本文使用最新的 4.3.0 ，用Xcode创建的Swift项目做案例。</p>
+</blockquote>
+<p>港真，教程的第一步并不是特别鸡冻的。为了在 Playground 中使用 AudioKit，我们必须提前进行一些准备工作。</p>
+<p>我们需要先到<a href="https://github.com/AudioKit/AudioKit" target="_blank" rel="noopener">AudioKit</a>下源码<a href="https://github.com/AudioKit/AudioKit/archive/v4.3.zip" target="_blank" rel="noopener">AudioKit-4.3</a>，或者自行clone：</p>
+<p></p><p><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AudioKit/AudioKit.git</span><br></pre></td></tr></table></figure></p>
+<p>解压好后用<code>Terminal</code>进入<code>AudioKit-4.3</code>文件夹执行编译命令：</p>
+<p></p><p><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> Frameworks</span><br><span class="line">$ ./build_frameworks.sh</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>编译时间较长（14的顶配编译的近十分钟吧），你阔以继续阅读，或者撸一把，或者鸡一把。</p>
+</blockquote>
+<p>一定要编译完成，编译好后进入<code>Playgrounds</code>文件，打开下面的<code>AudioKitPlaygrounds.xcodeproj</code>，这里我们就阔以看官方为我们写好的示例代码，提前体验一把 AudioKit 的强大。体验完了别忘了纸巾，进入正题开始教程之旅。</p>
+<p></p><p><br><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/02.StartProject.png" align="center" width="80%" height="80%"></p>
+
   </section>
 
 </article>
