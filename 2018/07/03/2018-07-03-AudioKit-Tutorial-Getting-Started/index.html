@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="z">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -34,8 +34,6 @@
 
     <meta name="generator" content="hexo"/>
     
-    <link rel="alternate" type="application/rss+xml" title="Andy矢倉" href="/atom.xml">
-    
 
     <link rel="canonical" href="http://rockerhx.github.io/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/"/>
 
@@ -69,9 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
-            
-              <li class="navigation__item"><a href="/">主页</a></li>
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">主页</a></li>
             
               <li class="navigation__item"><a href="/archives">所有文章</a></li>
             
@@ -122,13 +118,6 @@
 
   
 
-  <li class="navigation__item">
-    <a href="/atom.xml" title="RSS" target="_blank">
-      <i class='social fa fa-rss'></i>
-      <span class="label">RSS</span>
-    </a>
-  </li>
-
 
   <li class="navigation__item">
     <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
@@ -158,11 +147,11 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-07-03T15:01:11.000Z" class="post-list__meta--date date">7月 3 2018</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+      <time datetime="2018-07-03T15:01:11.000Z" class="post-list__meta--date date">7月 3 2018</time> &#8226; <span class="post-meta__tags tags">于 
   <a class="tag-link" href="/tags/Audio/">Audio</a>, <a class="tag-link" href="/tags/AudioKit/">AudioKit</a>, <a class="tag-link" href="/tags/Swift4/">Swift4+</a>, <a class="tag-link" href="/tags/Xcode9/">Xcode9+</a>
  </span>
       <span class="page-pv">
-      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -175,26 +164,25 @@
 </blockquote>
 <hr>
 <blockquote>
-<p>近来手上有一些音频相关的开发工作，搜搜<a href="https://github.com/" target="_blank" rel="noopener">基Hub</a>，目前最为强大，性能屌爆，编码炫酷的开源库也只有<a href="https://audiokitpro.com/" target="_blank" rel="noopener">AudioKit</a>了。<code>Raywenderlich</code>也能找到相关教程，介于作者是3.0+的教程，很多代码都不能跑了，特此整理一趴。<br>本文不仅是一篇iOS开发教程，更是一篇精彩的科普文。关于编程与艺术的结合，声学物理与音乐的碰撞，尽在此文。推荐所有程序员都好好读一读它，让我们的生活除了代码，还有艺术，还有音乐。感谢作者<a href="https://www.raywenderlich.com/u/colineberhardt" target="_blank" rel="noopener">Colin Eberhardt</a>。</p>
+<p>近来手上有一些音频相关的开发工作，搜搜<a href="https://github.com/" target="_blank" rel="noopener">基Hub</a>，目前最为强大，性能屌爆，编码炫酷的开源库也只有<a href="https://audiokit.io/" target="_blank" rel="noopener">AudioKit</a>了。<code>Raywenderlich</code>也能找到相关教程，介于作者是3.0+的教程，很多代码都不能跑了，特此整理一趴。<br>本文不仅是一篇iOS开发教程，更是一篇精彩的科普文。关于编程与艺术的结合，声学物理与音乐的碰撞，尽在此文。推荐所有程序员都好好读一读它，让我们的生活除了代码，还有艺术，还有音乐。感谢作者<a href="https://www.raywenderlich.com/u/colineberhardt" target="_blank" rel="noopener">Colin Eberhardt</a>。</p>
 </blockquote>
 <p>iOS 设备提供了丰富的多媒体体验，比如绚丽的视觉效果、声音和可触摸的交互界面。尽管能够使用各种各样的特性，但作为开发者，我们更多地关注了应用的视觉设计，而忽略了用户体验的声学效果。</p>
 <p><code>AudioKit</code>是一个高级音频框架，由声学设计师、程序员和音乐家为 iOS 专门打造。AudioKit底层混合了<code>Swift</code>、<code>Objective-C</code>、<code>C++</code>和<code>C</code>，负责和苹果音频已硬件的Api打交道。所有神奇（同时十分复杂的）技术都封装成为极其友好的 Swift Api ，你甚至可以直接在<code>Xcode</code>的<code>Playground</code>中使用它。</p>
 <p>本文无法全面覆盖 AudioKit 的知识点。相反，我们会通过介绍声音合成和计算机声频的历史，来带你进行一次有趣和时尚的 AudioKit 之旅。通过这种方式，你会学到基本的声学物理，了解早期的合成器比如电子琴是如何工作的。最终来到现代，一个大混音时代。</p>
 <p>请给自己来一杯咖啡，拖过一张椅子，开始我们的旅程！</p>
-<p></p><p><br><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/01.AudioKit-feature.png" align="center" width="30%" height="30%"></p>
+<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/01.AudioKit-feature.png" align="center" width="30%" height="30%"></p>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><blockquote>
 <p>原教程的原始内容使用的是 3.4.0 版本，用的是Playground做案例，本文使用最新的 4.3.0 ，用Xcode创建的Swift项目做案例。</p>
 </blockquote>
 <p>港真，教程的第一步并不是特别鸡冻的。为了在 Playground 中使用 AudioKit，我们必须提前进行一些准备工作。</p>
-<p>我们需要先到<a href="https://github.com/AudioKit/AudioKit" target="_blank" rel="noopener">AudioKit</a>下源码<a href="https://github.com/AudioKit/AudioKit/archive/v4.3.zip" target="_blank" rel="noopener">AudioKit-4.3</a>，或者自行clone：</p>
-<p></p><p><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AudioKit/AudioKit.git</span><br></pre></td></tr></table></figure></p>
-<p>解压好后用<code>Terminal</code>进入<code>AudioKit-4.3</code>文件夹执行编译命令：</p>
-<p></p><p><br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> Frameworks</span><br><span class="line">$ ./build_frameworks.sh</span><br></pre></td></tr></table></figure></p>
+<p>我们需要先到<a href="https://github.com/AudioKit/AudioKit" target="_blank" rel="noopener">AudioKit</a>下源码<a href="https://github.com/AudioKit/AudioKit/archive/v4.3.zip" target="_blank" rel="noopener">AudioKit-4.3</a>，或者自行clone：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/AudioKit/AudioKit.git</span><br></pre></td></tr></table></figure></p>
+<p>解压好后用<code>Terminal</code>进入<code>AudioKit-4.3</code>文件夹执行编译命令：<br><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> Frameworks</span><br><span class="line">$ ./build_frameworks.sh</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>编译时间较长（14的顶配编译的近十分钟吧），你阔以继续阅读，或者撸一把，或者鸡一把。</p>
 </blockquote>
 <p>一定要编译完成，编译好后进入<code>Playgrounds</code>文件，打开下面的<code>AudioKitPlaygrounds.xcodeproj</code>，这里我们就阔以看官方为我们写好的示例代码，提前体验一把 AudioKit 的强大。体验完了别忘了纸巾，进入正题开始教程之旅。</p>
-<p></p><p><br><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/02.StartProject.png" align="center" width="80%" height="80%"></p>
+<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/02.StartProject.png" align="center" width="80%" height="80%"></p>
+<p>新建一个名为<code>Jornery</code>的<code>Playground</code>。录入一下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import AudioKit</span><br><span class="line"></span><br><span class="line">let oscillator = AKOscillator()</span><br><span class="line"></span><br><span class="line">AudioKit.output = oscillator</span><br><span class="line">AudioKit.start()</span><br><span class="line"></span><br><span class="line">oscillator.start()</span><br><span class="line"></span><br><span class="line">sleep(10)</span><br></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -217,7 +205,7 @@
 从RxRealm入手我们可以通过CocoaPods简单的安装使用RxRealm这个extension：pod ‘RxRealm’，或者自行安装，详情参考文档s
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-05-02T03:25:48.000Z" class="post-list__meta--date date">5月 2 2018</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+                <div class="post-list__meta"><time datetime="2018-05-02T03:25:48.000Z" class="post-list__meta--date date">5月 2 2018</time> &#8226; <span class="post-list__meta--tags tags">于 
   <a class="tag-link" href="/tags/Realm/">Realm</a>, <a class="tag-link" href="/tags/RxSwift/">RxSwift</a>, <a class="tag-link" href="/tags/Swift4/">Swift4</a>
 </span><a class="btn-border-small" href="/2018/05/02/2018-05-02-Using-Realm-Seamlessly-in-an-RxSwift-App/">继续阅读</a></div>
                        
@@ -231,15 +219,14 @@
 
             <footer class="footer">
     <span class="footer__copyright">
-        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+        &copy; 2018 Andy矢倉 - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
     </span>
     <span class="footer__copyright">
-        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
-    </span>
-    <span class="footer__copyright">
-        &copy; 2018 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
-        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
-    </span>
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
     
 </footer>
 
