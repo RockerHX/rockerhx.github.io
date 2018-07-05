@@ -237,7 +237,7 @@
 <p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/08.AdditiveSynth.png" align="center" width="80%" height="80%"></p>
 <p>你可以通过修改每个 Slider 的振幅来改变乐器的音色。为了获得更加自然的音质，我建议你参照上图来进行设置。</p>
 <p>最早的一种采用叠加合成的合成器是 200 吨重的电传簧风琴。如此巨大的体量，立即宣告了这种乐器的消亡。结局更好的电子管风琴使用了类似的转速脉冲轮技术，但体积更小，用同样的加法合成实现了独特的声音。电传簧风琴在 1935 年发明，在前卫摇滚时代仍然是一种广为人知的流行乐器。</p>
-<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/09.Hammond_c3_Emilio_Muñoz.jpg" align="center"></p>
+<p><img src="/images/2018-07-03-AudioKit-Tutorial-Getting-Started/09.Hammond_c3_Emilio_Munoz.jpg" align="center"></p>
 <p>C3 电传簧风琴 – 图片来自 <a href="https://commons.wikimedia.org/wiki/File:Hammond_c3_Emilio_Mu%C3%B1oz.jpg" target="_blank" rel="noopener">public domain image</a>。</p>
 <p></p><p><br>转速脉冲轮上有旋转的轮盘，轮沿上有许多光滑的隆起，旋转轮盘附近有一个拾波器总成。电传簧风琴由许多这样的转速脉冲轮组成，它们以不同的速度旋转。音乐家通过拉杆来混合这些声音并产生一个音符。这种发声方式真的十分简陋，严格地讲，与其说是电子式的，不如说是机电式的。</p>
 <p>要创建更真实的声谱有许多别的技术，比如 调频技术（FM）和脉宽调制技术（PWM），这两种在 AudioKit 中都可以通过<code>AKFMOscillator</code>和<code>AKPWMOscillator</code>类来实现。无疑，我将鼓励你去尝试这两者。为什么不在你的 Playground 中用这两者将 AKOscillator 替换掉呢？</p>
