@@ -207,6 +207,26 @@
 <p>好在苹果也考虑到这种情况，我们改变<strong>Distribution</strong>属性，从<strong>Equal Spacing</strong>改为<strong>Fill Proportionally</strong>，<strong>spacing</strong>值改为<strong>10</strong>。<br><img src="/images/2018-08-21-UIStackView-Tutorial/24-Capto_Capture-2017-07-16_06-03-40_PM.png" align="center"></p>
 <p>现在，在iPhone SE模拟器上再跑一次，这次必须棒棒哒。<br><img src="/images/2018-08-21-UIStackView-Tutorial/25-5-niceButton.png" align="center" width="200pt"></p>
 <p>咋样，第一次上手<code>stack view</code>484真香，so easy。<br><img src="/images/2018-08-21-UIStackView-Tutorial/26-WechatIMG193.jpg" align="center" width="200pt"></p>
+<p>在没有<code>stack view</code>，你必须使用间隔视图来占位，每对按钮之间有一个占位。要正确定位间隔视图，您必须向所有间隔视图添加等宽约束以及许多附加约束。<br>它看起来会像下面这样。为了在屏幕截图中可见，间隔视图被赋予了浅灰色背景:<br><img src="/images/2018-08-21-UIStackView-Tutorial/27-21-alternate-solution-1_346x76.png" align="center"></p>
+<p>如果只是偶尔这么做一次其实还好，如果做多了，小伙子身体可吃不消啊。特别是动态添加视图这种。比如隐藏例子中的<strong>WEATHER</strong>这种。</p>
+<blockquote>
+<p>现在我们只是简单的设置间距值，如果你想在某个视图中设置特别的间距，在iOS11里提供的新的Api: <a href="https://developer.apple.com/documentation/uikit/uistackview/2866023-setcustomspacing" target="_blank" rel="noopener">setCustomSpacing:afterView</a>。</p>
+</blockquote>
+<h2 id="沙场老司机"><a href="#沙场老司机" class="headerlink" title="沙场老司机"></a>沙场老司机</h2><p>经过上面的演练，下面我们就能很轻松的把<strong>SpotInfoViewController</strong>里需要的结构转换成<code>stack view</code>。</p>
+<h3 id="评级部分"><a href="#评级部分" class="headerlink" title="评级部分"></a>评级部分</h3><p>选中评级<strong>RATING</strong>部分的两个控件。<br><img src="/images/2018-08-21-UIStackView-Tutorial/28-ratingSelect-2.png" align="center"></p>
+<p>接着还是同样的点击<strong>Stack</strong>按钮将其嵌入到<code>stack view</code>里。<br><img src="/images/2018-08-21-UIStackView-Tutorial/29-ratingStacked.png" align="center"></p>
+<p>这次我们只需要添加三个约束即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top: 20, Leading: 0, Bottom: 20</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/2018-08-21-UIStackView-Tutorial/30-add3Constraints.png" align="center"></p>
+<p><strong>spacing</strong>值这是为<code>8</code>：<br><img src="/images/2018-08-21-UIStackView-Tutorial/31-spacing8.png" align="center"></p>
+<p>你可能会看到一个错位的视图警告，如下图所示，其中星星标签已经超出了视图的范围（这种警告可能因为某些beta版本的原因才会出现，没出现那就恭喜你继续）:<br><img src="/images/2018-08-21-UIStackView-Tutorial/32-xcodeBug.png" align="center"></p>
+<p>如果确定自己的约束是正确的，因为Xcode某些版本的bug引起的视图错位，直接用右下角的<strong>Refresh Layout</strong>按钮矫正即可。<br><img src="/images/2018-08-21-UIStackView-Tutorial/33-refreshLayoutButton.png" align="center"></p>
+<p>现在看起来就正常了。<br><img src="/images/2018-08-21-UIStackView-Tutorial/34-starsBack.png" align="center"></p>
+<h3 id="还原视图"><a href="#还原视图" class="headerlink" title="还原视图"></a>还原视图</h3><p>如果发现有的时候手残，或者是处于实验性目的，多上了<code>stack view</code>，直接选中需要撤销的控件，按住<strong>Option</strong>，左击<strong>Stack</strong>选<strong>Unembed</strong>即可撤销。<br><img src="/images/2018-08-21-UIStackView-Tutorial/35-unembed.png" align="center"></p>
+<p>或者选中控件从菜单<strong>Editor \ Unembed</strong>撤销也行。</p>
+<h3 id="试试第一个垂直方式"><a href="#试试第一个垂直方式" class="headerlink" title="试试第一个垂直方式"></a>试试第一个垂直方式</h3><p>现在我们来创建垂直方式的堆栈视图，选中<strong>WHY VISIT</strong>和<strong><whyvisitlabel></whyvisitlabel></strong>两个文本控件。<br><img src="/images/2018-08-21-UIStackView-Tutorial/35-whyVisitSelected.png" align="center"></p>
+<p>Xcode会根据控件的分布排列来确实方向，就比如现在这样，直接生成的就是垂直分布的堆栈视图。<br><img src="/images/2018-08-21-UIStackView-Tutorial/36-whyVisitStacked.png" align="center"></p>
+<p>现在我们来确定约束，只需要把这部分的上左右约束都设置为0，只不过底部约束的对象是相对<strong>WEATHER</strong>控件，间距是20，一看即懂。<br><img src="/images/2018-08-21-UIStackView-Tutorial/37-whyVisitConstraintDetail.jpg" align="center" width="400pt"></p>
+<p>设置完后默认对齐是左对齐，如下图所示：<br><img src="/images/2018-08-21-UIStackView-Tutorial/38-whyVisitConstrained.png" align="center"></p>
 
   </section>
 
