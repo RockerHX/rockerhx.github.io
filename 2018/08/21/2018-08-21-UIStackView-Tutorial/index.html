@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>UIStackView上手教程 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="UIStackView上手教程 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="UIStackView上手教程 | Andy矢倉">
+    <meta property="og:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://rockerhx.github.io/2018/08/21/2018-08-21-UIStackView-Tutorial/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想 仗贱走天涯 看尽女人和繁华</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/rockerhx" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/rockerhx" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+  <li class="navigation__item">
+    <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-08-21T09:36:33.000Z" class="post-list__meta--date date">8月 21 2018</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/Swift4/">Swift4+</a>, <a class="tag-link" href="/tags/UIStackView/">UIStackView</a>, <a class="tag-link" href="/tags/Xcode9/">Xcode9+</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">UIStackView上手教程</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>原文：<a href="https://www.raywenderlich.com/508-uistackview-tutorial-introducing-stack-views" target="_blank" rel="noopener">UIStackView Tutorial: Introducing Stack Views</a><br>最初教程由<a href="https://www.raywenderlich.com/u/jawwad" target="_blank" rel="noopener">Jawwad Ahmad</a>原创。<a href="https://www.raywenderlich.com/u/kevcol" target="_blank" rel="noopener">Kevin Colligan</a>更新支持iOS 11、Xcode 9和Swift 4。</p>
+</blockquote>
+<hr>
+<p>iOS开发当中是不是遇到需要动态添加或者删除视图元素的需求。你是上基hub去嗨一遍第三方库还是自行撸frame，或者用Auto Layout的约束更新。就这点破需求，反正我是坚决不选前两者，即便是万不得已，最多也是更新约束（虽然Auto Layout的所见即所得极大缩短了开发耗时，增加我撸猫的快乐时光，但不得不承认我是很反感用代码去改约束，可视化编码还要去code约束，脑子有病！！！）。<br>处理这类需求，总之一句话。<br><img src="/images/2018-08-21-UIStackView-Tutorial/01.gif" align="center"></p>
+<p>好在，现在大家伙应该都只支持到iOS9了，用上<code>UIStackView</code>来处理这类需求简直是美滋滋，艾玛真香~~~<br>在本教程中，阔以了解<code>UIStackView</code>如何提供一种简单的方式来处理水平或垂直布局。还阔以了解如何通过使用对齐、分布和间距等属性来获取视图，以便自我调整方便自适应。</p>
+<blockquote>
+<p>本教程假定观者基本熟悉Auto Layout。如果不熟悉，请移步传送门<a href="https://videos.raywenderlich.com/courses/62-beginning-auto-layout/lessons/1" target="_blank" rel="noopener">Beginning Auto Layout</a>。</p>
+</blockquote>
+<h2 id="教程开始"><a href="#教程开始" class="headerlink" title="教程开始"></a>教程开始</h2><p><img src="/images/2018-08-21-UIStackView-Tutorial/02.jpg" align="center" width="200pt"></p>
+<p>在这份<code>UIStackView</code>教程中，我们将使用一个名为“Vacation Spots”的应用程序。这个简单的应用阔以展示度假地点的一些基础信息。<br>不要方方脏脏的就开始动手，因为有几个问题需要我们先用<code>UIStackView</code>来处理下，而且比单独使用自动布局要简单得多。首先下载这个<a href="/others/2018-08-21-UIStackView-Tutorial/VacationSpots_Starter-2.zip">UIStackView教程的入门项目</a>。打开项目并在iPhone模拟器上运行。你会看到一份度假地点清单。<br><img src="/images/2018-08-21-UIStackView-Tutorial/03-starterProject-1.png" align="center" width="200pt"></p>
+<p>点击<strong>London</strong>那一栏，进入伦敦的信息视图。乍一看，好像还不错，但有几个问题。</p>
+<ul>
+<li>看看视图底部的一排按钮。他们目前的位置是固定的，所以他们不适应屏幕宽度。不信按Command - left将模拟器横向来看看。<br><img src="/images/2018-08-21-UIStackView-Tutorial/04-starterProject.png" align="center" width="400pt"></li>
+<li>点击<strong>WEATHER</strong>旁边的<strong>Hide</strong>按钮。它成功地隐藏了文本，但是它没有重新定位它下面的部分，留下一块空白。<br><img src="/images/2018-08-21-UIStackView-Tutorial/05-starterProject.png" align="center" width="400pt"></li>
+<li>可以改进这些部分的展示顺序。如果<strong>what to see</strong>部分正好位于<strong>why visit</strong>部分之后，而不是在两者之间有<strong>weather</strong>部分，这将会更合乎逻辑。</li>
+<li>在横屏模式下，按钮的底部离视图的底部边缘太近了一点。如果能减少元素之间的间距，那就更好看。</li>
+</ul>
+<p>既然我们已经罗列好了改进工作，那就动手开始吧！！！</p>
+<p>打开<strong>Main.storyboard</strong>。第一次这样做时，会要求您选择初始设备视图。这个视图在运行时没有效果，它针对不同的设备调整大小，也只是让故事板的使用变得更加容易。iPhone 7或者8就行了。<br><img src="/images/2018-08-21-UIStackView-Tutorial/06-initialDeviceView.png" align="center" width="400pt"><br>你阔以随时点击故事板的操作区域的正下方，选择<strong>View As: iPhone 7 </strong>，或者随便改变也行。<br><img src="/images/2018-08-21-UIStackView-Tutorial/07-viewAsMenuSmaller.png" align="center" width="400pt"><br>现在打开<strong>Spot Info View Controller</strong>看看，这东一块西一坨的颜色是什么鬼？<br><img src="/images/2018-08-21-UIStackView-Tutorial/08-storyboardColors.png" align="center" width="400pt"></p>
+<p>这些标签和按钮的各种背景色，运行时会被清除。在<strong>Storyboard</strong>中，它们只是视觉上的辅助，帮助显示改变<strong>StackView</strong>的各种属性将如何影响其嵌入视图的布局。</p>
+<p>你现在不用管这些，如果在运行应用程序的时候你真的想看到背景色，你可以在<strong>SpotInfoViewController</strong>内部的<strong>viewDidLoad()</strong>中临时注释出以下几行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Clear background colors from labels and buttons</span><br><span class="line">for view in backgroundColoredViews &#123;</span><br><span class="line">    view.backgroundColor = UIColor.clear</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>此外，所有的UI元素都使用了明确的占位内容，以便链接属性的时候更加明确方便，减小连错的可能性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@IBOutlet weak var whyVisitLabel: UILabel!</span><br></pre></td></tr></table></figure>
+<p>叨逼叨完了，let’s get started!</p>
+<h2 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h2><p>使用<code>stack view</code>第一件事是修复按钮底部行之间的间距。<code>stack view</code>可以以各种方式沿其轴分布其视图，其中一种方式是每个视图之间的间距相等。<br>苹果为了推广新控件，我们可以直接把想要的处理的控件元素直接一键压入<code>stack view</code>。打开<strong>Spot Info View Controller</strong>故事版场景，按住<code>Command</code>选中底部三个按钮。<br><img src="/images/2018-08-21-UIStackView-Tutorial/09-spotInfoButtons.png" align="center"></p>
+<p>点击右下角<strong>Show Document Outlin</strong>：<br><img src="/images/2018-08-21-UIStackView-Tutorial/10-showDaOutline.png" align="center"></p>
+<p>在左侧控件集列表内确认下是不是选对了按钮：<br><img src="/images/2018-08-21-UIStackView-Tutorial/11-buttonsSelected.png" align="center" width="400pt"></p>
+<p>选中后，单击故事板画布右下角自动布局工具栏中的“新建堆栈”按钮:<br><img src="/images/2018-08-21-UIStackView-Tutorial/12-stackButton.png" align="center"></p>
+<p>按钮将嵌入到新的堆栈视图中:<br><img src="/images/2018-08-21-UIStackView-Tutorial/13-stackConfirmed.png" align="center" width="400pt"></p>
+<blockquote>
+<p>现在出现了约束警告，<code>stack view</code>只是一种排版形式，是继承自UIView，它也是需要约束来确定frame，只有确定好自身的frame以后才能处理内部控件布局。</p>
+</blockquote>
+<p>在<code>stack view</code>中嵌入控件时，将删除对其的任何约束。例如，在将按钮嵌入<code>stack view</code>之前，<strong>Submit Rating</strong>按钮的顶部有一个连接到<strong>Rating</strong>label的垂直间距约束：<br><img src="/images/2018-08-21-UIStackView-Tutorial/14-buttonConstrainOld.png" align="center"></p>
+<p>点击选中<strong>Submit Rating</strong>按钮可以看到它不在包含任何约束。<br><img src="/images/2018-08-21-UIStackView-Tutorial/15-buttonConstraintsWiped.png" align="center"></p>
+<p>也阔以通过<strong>Size inspector (⌥⌘5)</strong>来查看控件约束情况：<br><img src="/images/2018-08-21-UIStackView-Tutorial/16-noConstraints.png" align="center" width="400pt"></p>
+<p>接下来我们需要为<code>stack view</code>添加约束控制，如果整个页面的控件太多导致不好选中某个控件，直接从左侧的控件列表就好。<br><img src="/images/2018-08-21-UIStackView-Tutorial/17-stackSelect1.png" align="center"></p>
+<p>另外有个小技巧，按住<code>Shift</code>再单击右键，Xcode会帮大忙。<br><img src="/images/2018-08-21-UIStackView-Tutorial/18-stackSelect2.png" align="center"></p>
+<p>最后通过右下角的<strong>Auto Layout toolbar</strong>添加约束即可。<br><img src="/images/2018-08-21-UIStackView-Tutorial/19-pinButton.png" align="center"></p>
+<p>保持<strong>Constrain to margins</strong>选中，然后添加如下约束。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top: 20, Leading: 0, Trailing: 0, Bottom: 0</span><br></pre></td></tr></table></figure></p>
+<p>按照如图所示输入数字直接tab就好，简单而快速的添加约束才是敏捷开发的首选。<br><img src="/images/2018-08-21-UIStackView-Tutorial/20-add4Constraints.jpg" align="center"></p>
+<p>控件之间现在看起来像是这样，<code>stack view</code>会拉伸第一个控件来填充空间。<br><img src="/images/2018-08-21-UIStackView-Tutorial/21-Screen-Shot-2017-07-23-at-2.05.40-PM.png" align="center"></p>
+<p>决定<code>stack view</code>内部控件的分布属性为<code>distribution</code>。目前，它被设置为<code>Fill</code>，这意味着被包含的控件将沿着其轴完全填充。为了实现这一点，<code>stack view</code>将只拉伸其中一个视图来填充额外的空间；具体来说，它会拉伸<code>content hugging</code>优先级最低的视图，或者如果所有控件优先级相同，它拉伸第一个视图。</p>
+<p>然鹅，我们只是向他们等距分布就好。切换到<strong>Attributes inspector</strong>属性编辑器，把<strong>Distribution</strong>的值从<strong>Fill</strong>改到<strong>Equal Spacing</strong>即可：<br><img src="/images/2018-08-21-UIStackView-Tutorial/22-equalSpacing.png" align="center"></p>
+<p>跑一下看看底部按钮是不是等距分布了，无论是竖屏还是横盘都是稳稳的，不过还不够完美，当你切换到小屏幕上，比如使用<strong>iPhone SE</strong>模拟器来跑一下看看。<br><img src="/images/2018-08-21-UIStackView-Tutorial/23-4-squashedButton.png" align="center" width="200pt"></p>
+<p>好在苹果也考虑到这种情况，我们改变<strong>Distribution</strong>属性，从<strong>Equal Spacing</strong>改为<strong>Fill Proportionally</strong>，<strong>spacing</strong>值改为<strong>10</strong>。<br><img src="/images/2018-08-21-UIStackView-Tutorial/24-Capto_Capture-2017-07-16_06-03-40_PM.png" align="center"></p>
+<p>现在，在iPhone SE模拟器上再跑一次，这次必须棒棒哒。<br><img src="/images/2018-08-21-UIStackView-Tutorial/25-5-niceButton.png" align="center" width="200pt"></p>
+<p>咋样，第一次上手<code>stack view</code>484真香，so easy。<br><img src="/images/2018-08-21-UIStackView-Tutorial/26-WechatIMG193.jpg" align="center" width="200pt"></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/" title="AudioKit 入门教程">AudioKit 入门教程</a></h2>
+                <p class="excerpt">
+                
+                
+原文：AudioKit Tutorial: Getting Started作者：Colin Eberhardt同时感谢：kmyhy
+
+
+
+近来手上有一些音频相关的开发工作，搜搜基Hub，目前最为强大，性能屌爆，编码炫酷的开源库也只有AudioKit了。Raywenderlich也能找到相关教程，介
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-07-03T15:01:11.000Z" class="post-list__meta--date date">7月 3 2018</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Audio/">Audio</a>, <a class="tag-link" href="/tags/AudioKit/">AudioKit</a>, <a class="tag-link" href="/tags/Swift4/">Swift4+</a>, <a class="tag-link" href="/tags/Xcode9/">Xcode9+</a>
+</span><a class="btn-border-small" href="/2018/07/03/2018-07-03-AudioKit-Tutorial-Getting-Started/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 Andy矢倉 - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
