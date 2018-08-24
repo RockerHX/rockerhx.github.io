@@ -223,10 +223,72 @@
 <p>现在看起来就正常了。<br><img src="/images/2018-08-21-UIStackView-Tutorial/34-starsBack.png" align="center"></p>
 <h3 id="还原视图"><a href="#还原视图" class="headerlink" title="还原视图"></a>还原视图</h3><p>如果发现有的时候手残，或者是处于实验性目的，多上了<code>stack view</code>，直接选中需要撤销的控件，按住<strong>Option</strong>，左击<strong>Stack</strong>选<strong>Unembed</strong>即可撤销。<br><img src="/images/2018-08-21-UIStackView-Tutorial/35-unembed.png" align="center"></p>
 <p>或者选中控件从菜单<strong>Editor \ Unembed</strong>撤销也行。</p>
-<h3 id="试试第一个垂直方式"><a href="#试试第一个垂直方式" class="headerlink" title="试试第一个垂直方式"></a>试试第一个垂直方式</h3><p>现在我们来创建垂直方式的堆栈视图，选中<strong>WHY VISIT</strong>和<strong><whyvisitlabel></whyvisitlabel></strong>两个文本控件。<br><img src="/images/2018-08-21-UIStackView-Tutorial/35-whyVisitSelected.png" align="center"></p>
+<h3 id="试试第一个垂直方式"><a href="#试试第一个垂直方式" class="headerlink" title="试试第一个垂直方式"></a>试试第一个垂直方式</h3><p>现在我们来创建垂直方式的堆栈视图，选中<strong>WHY VISIT</strong>和<strong>&lt;whyVisitLabel&gt;</strong>两个文本控件。<br><img src="/images/2018-08-21-UIStackView-Tutorial/35-whyVisitSelected.png" align="center"></p>
 <p>Xcode会根据控件的分布排列来确实方向，就比如现在这样，直接生成的就是垂直分布的堆栈视图。<br><img src="/images/2018-08-21-UIStackView-Tutorial/36-whyVisitStacked.png" align="center"></p>
 <p>现在我们来确定约束，只需要把这部分的上左右约束都设置为0，只不过底部约束的对象是相对<strong>WEATHER</strong>控件，间距是20，一看即懂。<br><img src="/images/2018-08-21-UIStackView-Tutorial/37-whyVisitConstraintDetail.jpg" align="center" width="400pt"></p>
 <p>设置完后默认对齐是左对齐，如下图所示：<br><img src="/images/2018-08-21-UIStackView-Tutorial/38-whyVisitConstrained.png" align="center"></p>
+<h3 id="对齐属性"><a href="#对齐属性" class="headerlink" title="对齐属性"></a>对齐属性</h3><p>对齐属性确定堆栈视图如何垂直于其轴布局。对于垂直堆栈视图，可以设置的对齐方式为：</p>
+<ul>
+<li><strong>填充·Fill</strong></li>
+<li><strong>靠左对齐·Leading</strong></li>
+<li><strong>居中对齐·Center</strong></li>
+<li><strong>靠右对齐·Trailing</strong></li>
+</ul>
+<p>水平堆栈视图对齐属性的值略有不同:<br><img src="/images/2018-08-21-UIStackView-Tutorial/39-hortical.png" align="center"></p>
+<p>水平布局的对齐方式分别为：</p>
+<ul>
+<li><strong>顶部对齐·Top</strong></li>
+<li><strong>靠左对齐·Leading</strong></li>
+<li><strong>底部对齐·Bottom</strong></li>
+<li><strong>靠右对齐·Trailing</strong></li>
+<li><strong>第一元素基准线·FirstBaseline</strong>：意思是以第一个UI元素的的内容基准线为准，后面元素内容以此基准线对齐。</li>
+<li><strong>最后元素基准线·LastBaseline</strong>：意思是以最后一个UI元素的的内容基准线为准，前面元素内容以此基准线对齐。</li>
+</ul>
+<p>大家阔以选中刚才设置好的垂直堆栈视图，调整下对齐属性看下变化就浅显易懂了。<br><strong>填充·Fill：</strong><br><img src="/images/2018-08-21-UIStackView-Tutorial/40-alignFill.jpg" align="center" width="500pt"><br><strong>靠左对齐·Leading：</strong><br><img src="/images/2018-08-21-UIStackView-Tutorial/41-alignCenter.jpg" align="center" width="500pt"><br><strong>居中对齐·Center：</strong><br><img src="/images/2018-08-21-UIStackView-Tutorial/42-alignTrailing.jpg" align="center" width="500pt"><br><strong>靠右对齐·Trailing：</strong><br><img src="/images/2018-08-21-UIStackView-Tutorial/43-alignFillRed.jpg" align="center" width="500pt"></p>
+<p>跑起来看一下布局稳当冇问题。</p>
+<h3 id="转换“what-to-see”部分"><a href="#转换“what-to-see”部分" class="headerlink" title="转换“what to see”部分"></a>转换“what to see”部分</h3><p>这部分转换和前面一节没啥区别，直接操作关键点即可。</p>
+<ul>
+<li>首先选中<strong>WHAT TO SEE</strong>和<strong>&lt;whatToSeeLabel&gt;</strong>两个文本元素。</li>
+<li>其次压入堆栈视图。</li>
+<li>对齐方式选中填充·Fill。</li>
+<li>最后设置好如下约束即可。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top: 20, Leading: 0, Trailing: 0, Bottom: 20</span><br></pre></td></tr></table></figure>
+<p>设置完以后大概就长这样：<br><img src="/images/2018-08-21-UIStackView-Tutorial/44-whatToSee.png" align="center" width="500pt"></p>
+<h3 id="转换“weather”部分"><a href="#转换“weather”部分" class="headerlink" title="转换“weather”部分"></a>转换“weather”部分</h3><p>由于需要隐藏天气，所以这部分是比较难搞的。</p>
+<p>我们先把这部分的所有元素都压入堆栈视图。先选中<strong>WEATHER</strong>文本栏和<strong>Hide</strong>按钮，压入水平堆栈视图，然后在按住<strong>Command</strong>选中下面的<strong>&lt;weatherInfoLabel&gt;</strong>文本栏部分，将水平堆栈视图和这部分一起压入垂直堆栈视图。<br><img src="/images/2018-08-21-UIStackView-Tutorial/45-40-weather-stack-in-stack_640x92.png" align="center"></p>
+<p>其实可以发现，水平的堆栈视图被<strong>Hide</strong>按钮给顶开了，如果觉得不喜欢，阔以选中底部对齐的方式来看看效果。<br><img src="/images/2018-08-21-UIStackView-Tutorial/46-41-weather-stack-in-stack-alignment-bottom_640x92.png" align="center"></p>
+<p>也还是不太满意，那根据我的经验，要不就是修改水平堆栈视图内UI元素的约束优先级，要不就是把<strong>Hide</strong>按钮给拆出去，单独处理约束。为了容易理解我们还是单独处理。</p>
+<p>自行撤回到天气部分的原始转态。选中<strong>WEATHER</strong>和<strong>&lt;weatherInfoLabel&gt;</strong>两个文本栏部分:<br><img src="/images/2018-08-21-UIStackView-Tutorial/47-weatherStacked.png" align="center" width="600pt"></p>
+<p>将其压入垂直堆栈视图:<br><img src="/images/2018-08-21-UIStackView-Tutorial/48-43-weather-click-stack-button_640x92.png" align="center"></p>
+<p>然后设置好如下约束：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Top: 20, Leading: 0, Trailing: 0, Bottom: 20</span><br></pre></td></tr></table></figure></p>
+<p>对齐方式为填充：<br><img src="/images/2018-08-21-UIStackView-Tutorial/49-44-weather-alignment-fill_640x92.png" align="center"></p>
+<p>因为<strong>Hide</strong>按钮被拆出去，所以我们需要对其添加约束以保证按钮位置的正确性。因为需要设置约束的相对控件为<strong>WEATHER</strong>文本栏，所以我们还得再改造改造。<br>直接在控件列表栏选中<strong>WEATHER</strong>或使用组合拳<strong>Control-Shift-click</strong>：<br><img src="/images/2018-08-21-UIStackView-Tutorial/50-45-select-just-the-weather-label_640x92.png" align="center"></p>
+<p>压入堆栈视图：<br><img src="/images/2018-08-21-UIStackView-Tutorial/51-46-weather-in-horizontal-stack_640x92.png" align="center"></p>
+<p><strong>对齐方式·Alignment</strong>选中为<strong>靠左对齐·Leading</strong>，<strong>排版·Axis</strong>确定为<strong>垂直·Vertical</strong>排版：<br><img src="/images/2018-08-21-UIStackView-Tutorial/52-47-vertical-and-leading_640x92.png" align="center"></p>
+<p>运行看看是啥情况：<br><img src="/images/2018-08-21-UIStackView-Tutorial/53-6-hideInPlainSight.png" align="center" width="200pt"></p>
+<p>我顶你个肺，啥情况，按钮跑偏了？实际上是我们拆出<strong>Hide</strong>按钮之后忘记给设置约束。<br>按住<strong>Control</strong>选中<strong>Hide</strong>按钮拖动指向到<strong>WEATHER</strong>文本栏添加约束：<br><img src="/images/2018-08-21-UIStackView-Tutorial/54-49-drag-to-weather-label_380x94.png" align="center"></p>
+<p>只要完成如下两条约束，间距和纵向位置的约束即可：<br><img src="/images/2018-08-21-UIStackView-Tutorial/55-hideButtonAlignment.jpg" align="center" width="400pt"></p>
+<p>再重新跑一下，这回就必须妥当了。<br><img src="/images/2018-08-21-UIStackView-Tutorial/56-7-hidden.png" align="center" width="400pt"></p>
+<h3 id="堆栈化"><a href="#堆栈化" class="headerlink" title="堆栈化"></a>堆栈化</h3><p>在左侧控件列表里选中我们之前所有做个堆栈化的控件：<br><img src="/images/2018-08-21-UIStackView-Tutorial/57-fiveSelected.png" align="center" width="400pt"></p>
+<p>全部压入堆栈：<br><img src="/images/2018-08-21-UIStackView-Tutorial/58-topStack.png" align="center" width="400pt"></p>
+<p>然后给最外层堆栈视图添加约束，确保勾选上<strong>Constrain to margins</strong>，四边边距约束为0即可。<br>然后<strong>间隙·Spacing</strong>设置为<strong>20</strong>，<strong>对齐方式·Alignment</strong>设置为<strong>填充·Fill</strong>。<br><img src="/images/2018-08-21-UIStackView-Tutorial/59-topStackConstrained.png" align="center" width="400pt"></p>
+<p>再次运行还是会有刚才那个屌问题。<br><img src="/images/2018-08-21-UIStackView-Tutorial/53-6-hideInPlainSight.png" align="center" width="200pt"></p>
+<p>只要记住如果有外设相对控件的约束，只要堆栈化，约束就会被干掉，只能再次添加了：<br><img src="/images/2018-08-21-UIStackView-Tutorial/55-hideButtonAlignment.jpg" align="center" width="400pt"></p>
+<h3 id="完善层级"><a href="#完善层级" class="headerlink" title="完善层级"></a>完善层级</h3><p>最后我们需要把<strong>what to see</strong>的部分挪动到<strong>weather</strong>部分上面去，最好的方式是在左侧控件列表里拖动：<br><img src="/images/2018-08-21-UIStackView-Tutorial/62-57-drag-and-drop-to-reposition-section_639x130.png" align="center"></p>
+<blockquote>
+<p>如果在Storyboard里直接去拖动，很可能会因为选错控件元素而导致打乱结构。</p>
+</blockquote>
+<h3 id="根据屏幕大小配置间隙"><a href="#根据屏幕大小配置间隙" class="headerlink" title="根据屏幕大小配置间隙"></a>根据屏幕大小配置间隙</h3><p>由于在横屏的情况下，垂直方向上的空间比较珍贵，所以针对横屏，把间隙改为10比较稳妥。<br>找到<strong>间隙·Spacing</strong>的左侧的<strong>+</strong>号按钮：<br><img src="/images/2018-08-21-UIStackView-Tutorial/65-sizeClasses.png" align="center"></p>
+<p>选择<strong>Any Width &gt; Compact Height</strong>，然后<strong>添加·Add Variation</strong>：<br><img src="/images/2018-08-21-UIStackView-Tutorial/66-CompactHeight-480x183.png" align="center"></p>
+<p>给<strong>wAny hC</strong>栏添加值为10即可：<br><img src="/images/2018-08-21-UIStackView-Tutorial/67-sizeClasses2-1.png" align="center"></p>
+<p>最后运行一下看看，包括横屏（⌘←）也看看，484看起来比较舒爽了。<br><img src="/images/2018-08-21-UIStackView-Tutorial/68-9-spacing.png" align="center"></p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>当前的隐藏和呈现动画效果看起来有木有点生硬，感觉怪怪的。我们还是添加点动画让细节看起来比较丝滑为妙。<br>打开<strong>SpotInfoViewController.swift</strong>，定位到<code>updateWeatherInfoViews(hideWeatherInfo:animated:)</code>方法，现在看起来长这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">weatherInfoLabel.hidden = shouldHideWeatherInfo</span><br></pre></td></tr></table></figure></p>
+<p>替换成如下代码即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if animated &#123;</span><br><span class="line">    UIView.animate(withDuration: 0.3) &#123;</span><br><span class="line">        self.weatherInfoLabel.isHidden = shouldHideWeatherInfo</span><br><span class="line">    &#125;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    weatherInfoLabel.isHidden = shouldHideWeatherInfo</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>找到<code>@IBAction func weatherHideOrShowButtonTapped(_ sender: UIButton)</code>方法，替换成如下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@IBAction func weatherHideOrShowButtonTapped(_ sender: UIButton) &#123;</span><br><span class="line">	let shouldHideWeatherInfo = sender.titleLabel!.text! == &quot;Hide&quot;</span><br><span class="line">	updateWeatherInfoViews(hideWeatherInfo: shouldHideWeatherInfo, animated: shouldHideWeatherInfo)</span><br><span class="line">	shouldHideWeatherInfoSetting = shouldHideWeatherInfo</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样跑一下看，隐藏起来就不会辣么尬了。。。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>一切照旧，懒癌患者或者阅读理解不过关的胖友阔以直接下载<a href="https://koenig-media.raywenderlich.com/uploads/2017/07/VacationSpots_Final-1.zip" target="_blank" rel="noopener">最终代码</a>。</p>
+<p>有关<code>UIStackView</code>的使用就到这里，关于使用<code>UIStackView</code>做高级动画是稍稍有点复杂的，以后有空还是需要专门开一篇来做介绍。</p>
 
   </section>
 
