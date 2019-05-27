@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>使用CoreNFC和Swift构建NFC扫描器 | Andy矢倉</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="使用CoreNFC和Swift构建NFC扫描器 | Andy矢倉">
+    <meta name="twitter:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="使用CoreNFC和Swift构建NFC扫描器 | Andy矢倉">
+    <meta property="og:description" content="曾梦想 仗贱走天涯 看尽女人和繁华">
+
+    
+    <meta name="author" content="Andy矢倉">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://rockerhx.github.io/2019/05/27/2019-05-27-Building-a-NFC-Scanner-App-with-CoreNFC-in-Swift/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Andy矢倉 的主页"><img src="/images/avatar.jpg" width="80" alt="Andy矢倉 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Andy矢倉">Andy矢倉</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">老板 来杯董小姐 去冰 少糖 多放点小姐</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">曾梦想 仗贱走天涯 看尽女人和繁华</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">主页</a></li>
+            
+              <li class="navigation__item"><a href="/archives">所有文章</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/ganmaojijie" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/rockerhx" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/rockerhx" title="上Twitter找我" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+  
+
+
+  <li class="navigation__item">
+    <a href="mailto:rockerhx@gmail.com" title="邮件联系我" target="_blank">
+      <i class='social fa fa-envelope'></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2019-05-27T07:30:45.000Z" class="post-list__meta--date date">5月 27 2019</time> &#8226; <span class="post-meta__tags tags">于 
+  <a class="tag-link" href="/tags/CoreNFC/">CoreNFC</a>, <a class="tag-link" href="/tags/Swift5/">Swift5+</a>, <a class="tag-link" href="/tags/Xcode10/">Xcode10+</a>
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">使用CoreNFC和Swift构建NFC扫描器</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>原稿：<a href="https://medium.com/appcoda-tutorials/building-nfc-product-scanner-ios-app-with-corenfc-alfian-losari-5da0365bcde5" target="_blank" rel="noopener">Building a NFC Scanner App with CoreNFC in Swift</a><br>原文：<a href="https://blog.caver.cc/2019/05/27/2019-05-27-Building-a-NFC-Scanner-App-with-CoreNFC-in-Swift/" target="_blank" rel="noopener">使用CoreNFC和Swift构建NFC扫描器</a></p>
+</blockquote>
+<hr>
+<blockquote>
+<p>近场通信（NFC）是在一定距离(通常约4厘米)内实现两个设备之间无接触通信的技术。<br>如今，NFC正被用于非接触式支付系统、电子身份证、电子票证，以及共享联系人、照片、视频或网址等信息。这种标签或卡片可以使用NFC用来阅读信息，被称为NFC标签。</p>
+</blockquote>
+<p>根据维基百科描述，有三种通信模式可以在全NFC设备中执行:</p>
+<ul>
+<li><p>NFC卡仿真（NFC card emulation）<br>使支持NFC的设备(如智能手机)像智能卡一样工作，允许用户执行支付或票务等交易。</p>
+</li>
+<li><p>NFC读写器（NFC reader/writer）<br>使支持NFC的设备能够读取嵌入标签或智能海报中的廉价NFC标签上存储的信息。</p>
+</li>
+<li><p>NFC点对点（NFC peer-to-peer）<br>使两个支持NFC的设备能够相互通信，以临时方式交换信息。</p>
+</li>
+</ul>
+<h2 id="iOS中NFC的现状"><a href="#iOS中NFC的现状" class="headerlink" title="iOS中NFC的现状"></a>iOS中NFC的现状</h2><p>NFC是苹果公司在2014年发布苹果支付时接入iOS系统的。iPhone 6s和iPhone 6s Plus是第一款内置NFC硬件的设备，可以使用苹果支付进行无接触支付。然而，苹果没有为第三方开发者提供任何应用编程接口来使用苹果支付功能之外的NFC功能。</p>
+<p>在<code>iOS 11</code>中，苹果最终引入了<code>CoreNFC</code>框架，使第三方开发者能够在他们的应用程序中读取NFC标签。该应用程序接口仅支持在前台运行时读取NFC标签。</p>
+<p>在<code>iOS 12</code>中，随着苹果新苹果手机Xr、Xs、Xs、Max的发布，苹果最终引入了扫描NFC标签的功能，而无需使用这些设备运行应用程序。它还使用苹果<code>Universal Link</code>机制处理将扫描重定向到相关应用程序。</p>
+<p>到目前为止，<code>CoreNFC</code>还没有能力写入NFC标签。我真的希望<code>iOS 13</code>能够为第三方应用程序提供写标签的能力，因为执行写操作所需的硬件已经存在。</p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>在本教程中，我们将构建一个充当产品扫描仪的简单应用程序。该应用程序的主要功能如下:</p>
+<ul>
+<li>该应用程序将扫描NFC标签，并获取相关联的网址，以检索产品SKU身份证；</li>
+<li>然后，应用程序用特定的SKU身份证搜索其本地数据存储；</li>
+<li>如果找到，应用程序将显示产品的详细信息，如名称、图像、描述、价格和可用性；</li>
+<li>使用苹果<code>Universal Link</code>和<code>Firebase Hosting</code>扫描NFC标签，而不运行该应用程序。</li>
+</ul>
+<h2 id="开始编码"><a href="#开始编码" class="headerlink" title="开始编码"></a>开始编码</h2><p>您可以从下面的GitHub存储库中克隆初始项目源代码:</p>
+<ul>
+<li><a href="https://github.com/alfianlosari/NFCScanneriOSStarter" target="_blank" rel="noopener">NFCScanneriOSStarter</a></li>
+</ul>
+<p>起始项目包含所有自定义表格视图单元格和将在UI中使用的资产以及产品model。</p>
+<h2 id="产品模型和本地数据存储"><a href="#产品模型和本地数据存储" class="headerlink" title="产品模型和本地数据存储"></a>产品模型和本地数据存储</h2><p>我们使用一个具有几个属性的产品模型来表示一个产品。请记住，产品的id是每个产品的唯一标识符，商店将使用它来查找产品。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">struct Product &#123;</span><br><span class="line">    </span><br><span class="line">    let id: String</span><br><span class="line">    let name: String</span><br><span class="line">    let description: String</span><br><span class="line">    let price: String</span><br><span class="line">    let inStock: Bool</span><br><span class="line">    let image: UIImage?</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来，让我们创建<code>ProductStore</code>类。这是一个单例对象，它将硬编码产品数组并存储在内存中。它提供了获取指定SKU标识产品的接口。如果需要，您可以使用Core Data、SQLite将产品存储在本地存储中，甚至从网络拉取数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">struct ProductStore &#123;</span><br><span class="line"></span><br><span class="line">		static let shared = ProductStore()</span><br><span class="line">    private init() &#123;&#125;		</span><br><span class="line"></span><br><span class="line">    func product(withID id: String) -&gt; Product? &#123;</span><br><span class="line">        return products.first &#123; $0.id.lowercased() == id.lowercased() &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    let products = [</span><br><span class="line">        Product(id: &quot;SKU-RES2-982019&quot;, name: &quot;RESIDENT EVIL 2&quot;, description: &quot;&quot;&quot;</span><br><span class="line">		 The action centers around rookie cop Leon Kennedy and college student Claire Redfield as they fight to survive a mysterious viral outbreak within Raccoon City.</span><br><span class="line">    &quot;&quot;&quot;, price: &quot;$60.00&quot;, inStock: true, image: UIImage(named: &quot;res2&quot;)),</span><br><span class="line">        Product(id: &quot;SKU-KH3-0119&quot;, name: &quot;KINGDOM HEARTS 3&quot;, description: &quot;&quot;&quot;</span><br><span class="line">    KINGDOM HEARTS III tells the story of the power of friendship as Sora and his friends embark on a perilous adventure.</span><br><span class="line">    &quot;&quot;&quot;, price: &quot;$60.00&quot;, inStock: true, image: UIImage(named: &quot;kh3&quot;)),</span><br><span class="line">        Product(id: &quot;SKU-IPXSM-2018&quot;, name: &quot;iPhone Xs Max&quot;, description: &quot;&quot;&quot;</span><br><span class="line">    The smartest, most powerful chip in a smartphone. And a breakthrough dual-camera system.</span><br><span class="line">    &quot;&quot;&quot;, price: &quot;$999.00&quot;, inStock: false, image: UIImage(named: &quot;xsmax&quot;))</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h2><p><img src="/images/2019-05-27-Building-a-NFC-Scanner-App-with-CoreNFC-in-Swift/01.png" align="center" width="200pt"></p>
+<p>主屏幕仅包含一个<code>UILabel</code>和<code>UIButton</code>用于点击并开始NFC扫描会话。主屏幕的所有代码都写在<code>MainViewController</code>中。稍后，我们将在<code>scanTapped:</code>方法中添加代码来处理扫描会话。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/08/21/2018-08-21-UIStackView-Tutorial/" title="UIStackView上手教程">UIStackView上手教程</a></h2>
+                <p class="excerpt">
+                
+                
+原文：UIStackView Tutorial: Introducing Stack Views最初教程由Jawwad Ahmad原创。Kevin Colligan更新支持iOS 11、Xcode 9和Swift 4。
+
+
+iOS开发当中是不是遇到需要动态添加或者删除视图元素的需求。你是上基hub
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-08-21T09:36:33.000Z" class="post-list__meta--date date">8月 21 2018</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Swift4/">Swift4+</a>, <a class="tag-link" href="/tags/UIStackView/">UIStackView</a>, <a class="tag-link" href="/tags/Xcode9/">Xcode9+</a>
+</span><a class="btn-border-small" href="/2018/08/21/2018-08-21-UIStackView-Tutorial/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2019 Andy矢倉 - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f1811f144f64379f918cf1ef7bf3f3cb";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

@@ -149,6 +149,22 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/" title="link to post.title">修复因更新Xcode7插件不能使用问题</a></h2>
+      <p class="excerpt">
+    
+      在终端里输入以下代码获取到UUID：1defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID
+得到UUID以后运行：1find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I&amp;#123;&amp;#125; defaults write &amp;#123;&amp;#125; DVTPlugInCompatibilityUUIDs -array-add &amp;#123;UUID&amp;#125;
+懒癌患者可以在终端输入以下命令即可:
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2015-04-10T16:46:43.000Z" class="post-list__meta--date date">4月 11 2015</time> &#8226; <span class="post-list__meta--tags tags">于 
+  <a class="tag-link" href="/tags/Xcode/">Xcode</a>
+</span><a class="btn-border-small" href="/2015/04/11/2015-04-11-Fix-Xcode6-Plug/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2015/03/17/2015-03-17-AutoLayout-UITableViewCell-FooterView-Offset-Issue/" title="link to post.title">使用AutoLayout来动态计算UITableViewCell的高度，FooterView移位的问题</a></h2>
       <p class="excerpt">
     
